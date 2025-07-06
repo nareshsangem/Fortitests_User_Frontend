@@ -1,0 +1,137 @@
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import api from '../api';
+import PDFReportButton from '../Components/PdfReportButton';
+
+const COLORS = ['#4ade80', '#f87171', '#facc15']; // green, red, yellow
+
+const TestResultsPage = () => {
+  const { attemptId } = useParams();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [testInfo, setTestInfo] = useState(null);
+  const [results, setResults] = useState(null);
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    const fetchResults = async () => {
+      try {
+        const res = await api.get(`/attempt/result/${attemptId}`);
+        setTestInfo(res.data.test);
+        setResults({
+          totalScore: res.data.totalScore,
+          subjectScores: res.data.subjectScores,
+          timeTaken: res.data.timeTaken,
+        });
+        setQuestions(res.data.answers);
+      } catch (err) {
+        console.error('Failed to load results', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchResults();
+  }, [attemptId]);
+
+  if (loading) {
+    return <div className="p-6">Loading results...</div>;
+  }
+
+  const totalQuestions = questions.length;
+  const correctCount = questions.filter(q => q.is_correct).length;
+  const wrongCount = questions.filter(q => q.answered && !q.is_correct).length;
+  const unattemptedCount = totalQuestions - (correctCount + wrongCount);
+
+  const data = [
+    { name: 'Correct', value: correctCount },
+    { name: 'Wrong', value: wrongCount },
+    { name: 'Unattempted', value: unattemptedCount },
+  ];
+
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex justify-end gap-4">
+        <button
+          className="px-4 py-2 bg-gray-200 text-gray-800 rounded"
+          onClick={() => navigate('/home')}
+        >
+          Go Home
+        </button>
+        <PDFReportButton attemptId={attemptId} />
+      </div>
+      {/* Top Summary */}
+      <div className="border p-4 rounded bg-gray-50 flex flex-col md:flex-row justify-between items-center">
+        <h1 className="text-2xl font-bold">{testInfo.name} - Results</h1>
+        <div className="flex gap-4 mt-4 md:mt-0">
+          <div>Total Score: <strong>{results.totalScore}</strong></div>
+          <div>Time Taken: <strong>{results.timeTaken}</strong> mins</div>
+        </div>
+      </div>
+
+      {/* Subject-wise Breakdown */}
+      <div className="border p-4 rounded bg-white">
+        <h2 className="text-xl font-semibold mb-4">Subject-wise Performance</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {Object.entries(results.subjectScores).map(([subj, score]) => (
+            <div key={subj} className="p-4 bg-gray-50 rounded">
+              <h3 className="font-semibold">{subj}</h3>
+              <p>Score: {score}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Performance Chart */}
+      <div className="border p-4 rounded bg-white">
+        <h2 className="text-xl font-semibold mb-4">Overall Performance</h2>
+        <PieChart width={400} height={300}>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={100}
+            label
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </div>
+
+      {/* Detailed Question Review */}
+      <div className="border p-4 rounded bg-white">
+        <h2 className="text-xl font-semibold mb-4">Detailed Review</h2>
+        <div className="space-y-4">
+          {questions.map((q, i) => (
+            <div key={q.questionId} className="p-4 bg-gray-50 rounded shadow">
+              <div className="mb-2">
+                <span className="font-semibold">Q{i + 1}.</span> {q.questionText}
+              </div>
+              <div className="mb-2">
+                Your Answer: <span className={q.is_correct ? 'text-green-600' : 'text-red-600'}>
+                  {q.answered ? q.selected.join(', ') : 'Not Answered'}
+                </span>
+              </div>
+              {!q.is_correct && (
+                <div className="mb-2">
+                  Correct Answer: <span className="text-green-600">{q.correctAnswers.join(', ')}</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Actions */}
+      
+    </div>
+  );
+};
+
+export default TestResultsPage;
