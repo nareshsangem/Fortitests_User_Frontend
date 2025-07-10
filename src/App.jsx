@@ -13,6 +13,9 @@ import SubcategoryTestsPage from './Pages/SubcategoryTestsPage';
 import  TestInstructionsPage from './Pages/TestInstructionsPage';
 import TakeTestPage from './Pages/LiveTestPage/TestTakingpage';
 import TestResultsPage from './Pages/TestResultsPage';
+import MyTestsPage from './Pages/MyTestsPage';
+import AboutUsPage from './Pages/AboutPage';
+
 export default function App() {
   return (
     <Routes>
@@ -78,6 +81,16 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/my-tests"
+        element={
+          <ProtectedRoute>
+            <MyTestsPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route path="/about" element={<AboutUsPage />} />
     </Routes>
   );
 }

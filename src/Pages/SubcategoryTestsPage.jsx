@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { toast } from 'react-toastify';
 import { useUser } from '../context/UserContext';
+import HomeNavbar from '../components/HomeNavbar';
+
 
 export default function SubcategoryTestsPage() {
   const { subId } = useParams();
@@ -56,14 +58,14 @@ export default function SubcategoryTestsPage() {
     return result;
   };
 
-  const previousTests = filterAndSort('previous');
+  const previousTests = filterAndSort('pyq');
   const mockTests = filterAndSort('mock');
-  const subjectTests = filterAndSort('subject');
+  const subjectTests = filterAndSort('subject wise');
 
   const renderTestCard = (test) => (
     <div
       key={test.id}
-      className="mb-4 p-4 border rounded shadow bg-white flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-md"
+      className="mb-4 w-60 p-3 border rounded shadow bg-white flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-md"
     >
       <h3 className="text-base font-semibold text-gray-800 mb-2 text-center">{test.name}</h3>
       <p className="text-sm font-bold text-gray-700 text-center">
@@ -80,6 +82,10 @@ export default function SubcategoryTestsPage() {
   if (!user) return null;
 
   return (
+    <div>
+      <div>
+        <HomeNavbar/>
+        </div>
     <div className="px-4 py-8 max-w-[95%] mx-auto">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">All Tests</h1>
@@ -119,9 +125,9 @@ export default function SubcategoryTestsPage() {
           className="w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="all">Show All</option>
-          <option value="previous">Previous Year Questions</option>
+          <option value="pyq">Previous Year Questions</option>
           <option value="mock">Mock Tests</option>
-          <option value="subject">Subject-Wise Tests</option>
+          <option value="suject wise">Subject-Wise Tests</option>
         </select>
       </div>
 
@@ -132,9 +138,9 @@ export default function SubcategoryTestsPage() {
         <>
           {/* All 3 sections for md+ or filtered one for sm */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(selectedType === 'all' || selectedType === 'previous') && (
-              <div>
-                <h2 className="text-xl font-semibold text-blue-700 mb-4">Previous Year Questions</h2>
+            {(selectedType === 'all' || selectedType === 'pyq') && (
+              <div >
+                <h2 className="text-xl  font-semibold text-blue-700 mb-4">Previous Year Papers</h2>
                 {previousTests.length === 0 ? (
                   <p className="text-sm text-gray-500">No tests found.</p>
                 ) : (
@@ -152,7 +158,7 @@ export default function SubcategoryTestsPage() {
                 )}
               </div>
             )}
-            {(selectedType === 'all' || selectedType === 'subject') && (
+            {(selectedType === 'all' || selectedType === 'subject wise') && (
               <div>
                 <h2 className="text-xl font-semibold text-blue-700 mb-4">Subject-Wise Tests</h2>
                 {subjectTests.length === 0 ? (
@@ -165,6 +171,7 @@ export default function SubcategoryTestsPage() {
           </div>
         </>
       )}
+    </div>
     </div>
   );
 }

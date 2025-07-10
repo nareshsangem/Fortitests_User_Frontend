@@ -4,7 +4,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import api from '../api';
 import PDFReportButton from '../Components/PdfReportButton';
 
-const COLORS = ['#4ade80', '#f87171', '#facc15']; // green, red, yellow
+const COLORS = ['#4ade80', '#ef4444', '#facc15']; // green, red, yellow
 
 const TestResultsPage = () => {
   const { attemptId } = useParams();
@@ -21,6 +21,7 @@ const TestResultsPage = () => {
         setTestInfo(res.data.test);
         setResults({
           totalScore: res.data.totalScore,
+          totalMarks: res.data.totalMarks,
           subjectScores: res.data.subjectScores,
           timeTaken: res.data.timeTaken,
         });
@@ -38,12 +39,18 @@ const TestResultsPage = () => {
     return <div className="p-6">Loading results...</div>;
   }
 
+  const formatTime = (timeObj) => {
+  if (!timeObj || typeof timeObj !== 'object') return 'N/A';
+  const { minutes = 0, seconds = 0 } = timeObj;
+  return `${minutes}m ${seconds}s`;
+};
+
   const totalQuestions = questions.length;
   const correctCount = questions.filter(q => q.is_correct).length;
   const wrongCount = questions.filter(q => q.answered && !q.is_correct).length;
   const unattemptedCount = totalQuestions - (correctCount + wrongCount);
 
-  const data = [
+  const overallData = [
     { name: 'Correct', value: correctCount },
     { name: 'Wrong', value: wrongCount },
     { name: 'Unattempted', value: unattemptedCount },
@@ -60,48 +67,82 @@ const TestResultsPage = () => {
         </button>
         <PDFReportButton attemptId={attemptId} />
       </div>
+
       {/* Top Summary */}
       <div className="border p-4 rounded bg-gray-50 flex flex-col md:flex-row justify-between items-center">
-        <h1 className="text-2xl font-bold">{testInfo.name} - Results</h1>
-        <div className="flex gap-4 mt-4 md:mt-0">
-          <div>Total Score: <strong>{results.totalScore}</strong></div>
-          <div>Time Taken: <strong>{results.timeTaken}</strong> mins</div>
+        <h1 className="text-2xl font-bold text-center md:text-left">{testInfo.name} - Results</h1>
+        <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-0">
+          <div>Total Score: <strong>{results.totalScore} / {results.totalMarks}</strong></div>
+          <div>Time Taken: <strong>{formatTime(results.timeTaken)}</strong></div>
         </div>
       </div>
 
-      {/* Subject-wise Breakdown */}
+      {/* Subject-wise Breakdown with Pie Charts */}
       <div className="border p-4 rounded bg-white">
         <h2 className="text-xl font-semibold mb-4">Subject-wise Performance</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {Object.entries(results.subjectScores).map(([subj, score]) => (
-            <div key={subj} className="p-4 bg-gray-50 rounded">
-              <h3 className="font-semibold">{subj}</h3>
-              <p>Score: {score}</p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {Object.entries(results.subjectScores).map(([subject, scoreObj]) => {
+            const chartData = [
+              { name: 'Correct', value: scoreObj.questionStats.correct },
+              { name: 'Wrong', value: scoreObj.questionStats.wrong },
+              { name: 'Unattempted', value: scoreObj.questionStats.unattempted },
+            ];
+            return (
+              <div key={subject} className="p-4 bg-gray-50 rounded shadow flex flex-col items-center">
+                <h3 className="font-semibold mb-1">{subject}</h3>
+                <p className="mb-2 text-sm">Score: {scoreObj.scored} / {scoreObj.total}</p>
+                <PieChart width={180} height={180}>
+                  <Pie
+                    data={chartData}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={60}
+                    label
+                  >
+                    {chartData.map((entry, index) => (
+                      <Cell key={`cell-${subject}-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Performance Chart */}
+      {/* Overall Performance */}
       <div className="border p-4 rounded bg-white">
         <h2 className="text-xl font-semibold mb-4">Overall Performance</h2>
-        <PieChart width={400} height={300}>
-          <Pie
-            data={data}
-            dataKey="value"
-            nameKey="name"
-            cx="50%"
-            cy="50%"
-            outerRadius={100}
-            label
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-          <Legend />
-        </PieChart>
+        <div className="flex flex-col md:flex-row md:items-center gap-6 justify-center md:justify-start">
+  <div className="flex justify-center">
+    <PieChart width={250} height={320}>
+      <Pie
+        data={overallData}
+        dataKey="value"
+        nameKey="name"
+        cx="50%"
+        cy="50%"
+        outerRadius={80}
+        label
+      >
+        {overallData.map((entry, index) => (
+          <Cell key={`cell-overall-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
+      </Pie>
+      <Tooltip />
+      <Legend />
+    </PieChart>
+  </div>
+  <div className="text-lg font-medium text-center lg:text-left">
+    <div>Total Score: <strong>{results.totalScore} / {results.totalMarks}</strong></div>
+    <div>Correct: <strong>{correctCount}</strong></div>
+    <div>Wrong: <strong className="text-red-600">{wrongCount}</strong></div>
+    <div>Unattempted: <strong>{unattemptedCount}</strong></div>
+  </div>
+</div>
       </div>
 
       {/* Detailed Question Review */}
@@ -115,21 +156,20 @@ const TestResultsPage = () => {
               </div>
               <div className="mb-2">
                 Your Answer: <span className={q.is_correct ? 'text-green-600' : 'text-red-600'}>
-                  {q.answered ? q.selected.join(', ') : 'Not Answered'}
+                  {q.answered ? (Array.isArray(q.selected) ? q.selected.join(', ') : q.selected) : 'Not Answered'}
                 </span>
               </div>
               {!q.is_correct && (
                 <div className="mb-2">
-                  Correct Answer: <span className="text-green-600">{q.correctAnswers.join(', ')}</span>
+                  Correct Answer: <span className="text-green-600">
+                    {Array.isArray(q.correctAnswers) ? q.correctAnswers.join(', ') : q.correctAnswers}
+                  </span>
                 </div>
               )}
             </div>
           ))}
         </div>
       </div>
-
-      {/* Actions */}
-      
     </div>
   );
 };

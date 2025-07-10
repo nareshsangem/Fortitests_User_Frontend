@@ -3,7 +3,7 @@ import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { useUser } from '../context/UserContext';
 import { toast } from 'react-toastify';
-
+import HomeNavbar from '../Components/HomeNavbar';
 export default function AllCategoriesPage() {
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -61,7 +61,10 @@ export default function AllCategoriesPage() {
   if (!user) return null;
 
   return (
+    <div className="bg-gray-100 min-h-screen">
+      <HomeNavbar />
     <div className="px-4 py-8 max-w-7xl mx-auto">
+      
       <h1 className="text-2xl font-bold mb-6 text-gray-800">Explore All Exam Categories</h1>
 
       <input
@@ -111,6 +114,7 @@ export default function AllCategoriesPage() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

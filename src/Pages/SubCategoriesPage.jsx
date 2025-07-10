@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import api from '../api';
 import { useUser } from '../context/UserContext';
 import { toast } from 'react-toastify';
+import HomeNavbar from '../components/HomeNavbar';
 
 export default function SubCategoryPage() {
   const { id } = useParams(); // category ID
@@ -55,7 +56,10 @@ export default function SubCategoryPage() {
   if (!user) return null;
 
   return (
+    <div>
+    <div><HomeNavbar/></div>
     <div className="px-4 py-8 max-w-7xl mx-auto">
+      
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Select a Subcategory</h1>
         <button
@@ -118,6 +122,7 @@ export default function SubCategoryPage() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

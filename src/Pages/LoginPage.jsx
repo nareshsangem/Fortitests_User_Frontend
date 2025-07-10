@@ -24,6 +24,7 @@ export default function LoginPage() {
       if (res.data.success) {
         toast.success("Login successful!");
         setUser(res.data.user); // ✅ This is the key line to add
+        localStorage.setItem("fortitests_user", JSON.stringify(res.data.user));
         setTimeout(() => {
           navigate("/home");
         }, 1000);

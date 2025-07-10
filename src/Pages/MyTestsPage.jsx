@@ -1,55 +1,129 @@
 import React, { useEffect, useState } from 'react';
+import api from '../api';
 import { useNavigate } from 'react-router-dom';
+import HomeNavbar from '../components/HomeNavbar';
 
-const MyTestsPage = () => {
-  const [tests, setTests] = useState([]);
+function MyTestsPage() {
+  const [attempts, setAttempts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('all');
+  const [sortOrder] = useState('newest');
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchUserTests() {
+    const fetchAttempts = async () => {
       try {
-        const res = await fetch('/api/user/tests', {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-        });
-        if (!res.ok) throw new Error('Failed to fetch tests');
-        const data = await res.json();
-        setTests(data);
+        const res = await api.get('/attempt/myAttempts', { withCredentials: true });
+        setAttempts(res.data.attempts || []);
       } catch (err) {
-        console.error(err);
+        console.error('Error fetching attempts:', err);
       } finally {
         setLoading(false);
       }
-    }
-    fetchUserTests();
+    };
+    fetchAttempts();
   }, []);
 
-  if (loading) return <div className="p-4 text-center">Loading your tests...</div>;
+  const filteredAttempts = attempts
+    .filter((attempt) => {
+      if (filter === 'Finished') return attempt.status === 'submitted';
+      if (filter === 'Not Finished') return attempt.status !== 'submitted';
+      return true; // all
+    })
+    .sort((a, b) => {
+      const dateA = new Date(a.started_at || a.created_at);
+      const dateB = new Date(b.started_at || b.created_at);
+      return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+    });
 
-  if (tests.length === 0) return <div className="p-4 text-center">No tests attempted yet.</div>;
-
+    if (loading) {
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-6">My Tests</h2>
-      <ul className="space-y-4">
-        {tests.map(test => (
-          <li key={test.id} className="border rounded p-4 shadow flex justify-between items-center">
-            <div>
-              <p className="font-semibold">{test.name}</p>
-              <p className="text-sm text-gray-600">Attempted on: {new Date(test.attemptDate).toLocaleString()}</p>
-              <p className="text-sm">Score: {test.score} / {test.totalMarks}</p>
-            </div>
-            <button
-              onClick={() => navigate(`/test/${test.id}/result`)}
-              className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
-            >
-              View Result
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="flex justify-center items-center py-10">
+      <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
     </div>
   );
-};
+}
+  return (
+    <div>
+      <HomeNavbar />
+
+      <div className="max-w-7xl mx-auto p-4">
+        <div className='flex flex-row justify-between items-center'>
+          <div>
+               <h2 className="text-2xl font-semibold mb-6">My Tests</h2>
+          </div>
+         
+        {/* Filter & Sort Controls */}
+        <div className="flex flex-wrap gap-4 mb-6">
+          <select
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="border px-4 py-2 rounded-md text-sm"
+          >
+            <option value="all">All Tests</option>
+            <option value="Finished">Finished</option>
+            <option value="Not Finished">Not Finished</option>
+          </select>
+
+        </div>
+        </div>
+        
+
+        {/* Grid of Attempts */}
+        {filteredAttempts.length === 0 ? (
+          <p className="text-gray-500 text-center">No test attempts found.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filteredAttempts.map((attempt) => (
+              <div
+                key={attempt.id}
+                className="bg-white shadow-md rounded-xl p-4 flex flex-col justify-between"
+              >
+                <div>
+                  <div  className='flex flex-row justify-between items-center'>
+                  <p className="text-blue-700 font-bold mb-1">{attempt.test_name}</p>
+                  <p className="text-sm text-gray-600">
+                    Status: <span className={`font-semibold ${attempt.status === 'submitted' ? 'text-green-600' : 'text-yellow-500'}`}>
+                      {attempt.status === 'submitted' ? 'Finished' : 'Not Finished'}
+                    </span>
+                  </p>
+                  </div>
+                  {attempt.status === 'submitted' && (
+                    <div className='flex flex-row justify-between items-center'>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Score: <span className="font-semibold text-blue-700">
+                          {attempt.total_score} / {attempt.total_marks}
+                        </span>
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        Percentage: {(attempt.total_score / attempt.total_marks * 100).toFixed(1)}%
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {attempt.status === 'submitted' ? (
+                  <button
+                    onClick={() => navigate(`/test-results/${attempt.id}`)}
+                    className="mt-4 w-full text-center text-white bg-blue-600 hover:bg-blue-700 py-2 rounded-lg text-sm"
+                  >
+                    View Full Results
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className="mt-4 w-full text-center bg-gray-200 text-gray-500 py-2 rounded-lg text-sm cursor-not-allowed"
+                  >
+                    Not Finished
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default MyTestsPage;
