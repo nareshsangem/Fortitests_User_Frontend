@@ -4,8 +4,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../api';
-
+import usePageTracker from '../hooks/usePageTracker';
+import { useUser } from '../context/UserContext';
 const TestInstructionsPage = () => {
+  const { user } = useUser()
+   usePageTracker({
+    userId: user?.id,
+    testId: test?.id,
+    categoryId: test?.category_id,
+  });
   const { testId } = useParams();
   const navigate = useNavigate();
 

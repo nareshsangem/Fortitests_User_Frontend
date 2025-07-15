@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
 import { useNavigate } from 'react-router-dom';
-import HomeNavbar from '../components/HomeNavbar';
+import HomeNavbar from '../Components/HomeNavbar';
 
 function MyTestsPage() {
   const [attempts, setAttempts] = useState([]);

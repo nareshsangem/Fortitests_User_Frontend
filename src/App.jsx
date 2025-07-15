@@ -16,7 +16,13 @@ import TestResultsPage from './Pages/TestResultsPage';
 import MyTestsPage from './Pages/MyTestsPage';
 import AboutUsPage from './Pages/AboutPage';
 
+import useAutoTracker from './hooks/useAutoTracker'; 
+import { useUser } from './context/UserContext';
+
 export default function App() {
+  const { user } = useUser(); 
+  useAutoTracker(user?.id);
+
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
