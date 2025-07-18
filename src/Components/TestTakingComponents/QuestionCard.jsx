@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
-const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMark }) => {
+const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMark, onClear }) => {
+
   const inputRef = useRef(null);
 
   const handleSingleSelect = (opt) => {
@@ -112,7 +113,14 @@ const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMar
           {isMarked ? 'Unmark Review' : 'Mark for Review'}
         </button>
       </div>
-
+      {answer?.selected?.length > 0 && (
+        <button
+          onClick={onClear}
+          className="mt-3 px-3 py-1 border bg-blue-600 border-gray-400 rounded text-sm text-white hover:scale-103"
+        >
+          Clear Answer
+        </button>
+      )}      
       {/* Optional Marks Display */}
       <div className="mt-3 text-xs text-gray-500">
         +{question.positive_marks} mark{question.positive_marks !== 1 ? 's' : ''} | 

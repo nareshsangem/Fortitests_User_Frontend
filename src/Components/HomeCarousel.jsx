@@ -1,103 +1,78 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const slides = [
-  {
-    id: 1,
-    image: 'https://via.placeholder.com/1200x400?text=Mock+Test+Series',
-    link: '/tests/mock-series',
-    alt: 'Mock Test Series',
-  },
-  {
-    id: 2,
-    image: 'https://via.placeholder.com/1200x400?text=Practice+Daily+Quizzes',
-    link: '/quizzes/daily',
-    alt: 'Daily Quizzes',
-  },
-  {
-    id: 3,
-    image: 'https://via.placeholder.com/1200x400?text=Upgrade+to+Premium',
-    link: '/upgrade',
-    alt: 'Upgrade to Premium',
-  },
-];
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
 export default function HomeCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef(null);
-
-  const goToSlide = (index) => {
-    const newIndex = (index + slides.length) % slides.length;
-    setCurrentIndex(newIndex);
-  };
-
-  const nextSlide = () => goToSlide(currentIndex + 1);
-  const prevSlide = () => goToSlide(currentIndex - 1);
-
-  useEffect(() => {
-    startAutoPlay();
-    return () => stopAutoPlay();
-  }, [currentIndex]);
-
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    intervalRef.current = setInterval(nextSlide, 4000);
-  };
-
-  const stopAutoPlay = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  };
-
   return (
-    <div
-      className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-lg group"
-      onMouseEnter={stopAutoPlay}
-      onMouseLeave={startAutoPlay}
-    >
-      <div className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {slides.map((slide) => (
-          <a
-            href={slide.link}
-            key={slide.id}
-            className="min-w-full block"
-          >
-            <img
-              src={slide.image}
-              alt={slide.alt}
-              className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover"
-            />
-          </a>
-        ))}
-      </div>
+    <section className="bg-gradient-to-r from-blue-50 to-sky-100 py-10 md:py-20">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+        
+        {/* Left: Text Content */}
+        <div className="flex-1 text-center md:text-left">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 animate-fadeInUp">
+            Crack Government Exams with <br className="hidden sm:block" /> Free Mock Tests
+          </h1>
 
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full shadow-md hidden group-hover:block"
-      >
-        <ChevronLeft size={24} />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full shadow-md hidden group-hover:block"
-      >
-        <ChevronRight size={24} />
-      </button>
+          <p className="text-base text-md md:text-lg text-gray-600 mt-6 max-w-xl animate-fadeInUp delay-100">
+            Take real exam-like mock tests for SSC, RRB, TSPSC, Banking, and more.
+          </p>
+          <p className="text-base md:text-md text-gray-600 mt-2 max-w-xl animate-fadeInUp delay-200">
+            Get exam-level practice with instant feedback, deep insights, and downloadable reports.
+          </p>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
-            }`}
-            onClick={() => goToSlide(index)}
+          <div className="mt-8 flex justify-center md:justify-start animate-fadeInUp delay-300">
+            <a
+              href="/exams"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2"
+            >
+              Start Practicing <ArrowRight size={20} />
+            </a>
+            <a
+              href="/exams"
+              className="ml-4 border  border-blue-600 text-blue-600 hover:bg-blue-100 px-5 py-2 rounded-xl font-medium transition-all"
+            >
+              Browse Exams
+            </a>
+          </div>
+        </div>
+
+        {/* Right: Illustration */}
+        <div className="flex-1 flex justify-center md:justify-end">
+          <img
+            src="../src/assets/hero66.png"
+            alt="Student practicing mock tests"
+            className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full  "
           />
-        ))}
+        </div>
       </div>
-    </div>
+
+      {/* Animations */}
+      <style>
+        {`
+          .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease both;
+          }
+          .animate-fadeInUp.delay-100 {
+            animation-delay: 0.1s;
+          }
+          .animate-fadeInUp.delay-200 {
+            animation-delay: 0.2s;
+          }
+          .animate-fadeInUp.delay-300 {
+            animation-delay: 0.3s;
+          }
+          .animate-scaleIn {
+            animation: scaleIn 0.7s ease both;
+          }
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+          }
+        `}
+      </style>
+    </section>
   );
 }

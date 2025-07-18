@@ -4,6 +4,7 @@ import api from '../api';
 import { useUser } from '../context/UserContext';
 import { toast } from 'react-toastify';
 import HomeNavbar from '../Components/HomeNavbar';
+
 export default function AllCategoriesPage() {
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +15,6 @@ export default function AllCategoriesPage() {
   const { user } = useUser();
   const navigate = useNavigate();
 
-  // 🔐 Redirect unauthenticated users
   useEffect(() => {
     if (!user) {
       toast.info('Please login to access exam categories');
@@ -22,7 +22,6 @@ export default function AllCategoriesPage() {
     }
   }, [user, navigate]);
 
-  // 🔄 Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -39,7 +38,6 @@ export default function AllCategoriesPage() {
     if (user) fetchCategories();
   }, [user]);
 
-  // If URL has ?category=123, prefill search
   useEffect(() => {
     const query = params.get('category');
     if (query) {
@@ -48,73 +46,101 @@ export default function AllCategoriesPage() {
     }
   }, [params, categories]);
 
-  // 🔍 Filter categories by search
   useEffect(() => {
     const lower = searchTerm.toLowerCase();
-    setFiltered(
-      categories.filter(cat =>
-        cat.name.toLowerCase().includes(lower)
-      )
-    );
+    setFiltered(categories.filter(cat => cat.name.toLowerCase().includes(lower)));
   }, [searchTerm, categories]);
 
   if (!user) return null;
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gradient-to-l from-blue-50 to-sky-100 min-h-screen font-sans">
       <HomeNavbar />
-    <div className="px-4 py-8 max-w-7xl mx-auto">
-      
-      <h1 className="text-2xl font-bold mb-6 text-gray-800">Explore All Exam Categories</h1>
 
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search categories..."
-        className="w-full mb-6 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+      <div className="px-4 py-10 max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold mb-6 text-blue-900">Explore All Exam Categories</h1>
 
-      {loading ? (
-        <div className="text-center text-gray-500">Loading all categories...</div>
-      ) : filtered.length === 0 ? (
-        <div className="text-center py-16 text-gray-500 text-lg">
-          😕 No categories found for "<span className="font-semibold">{searchTerm}</span>"
-          <div className="mt-4">
-            <button
-              onClick={() => setSearchTerm('')}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-            >
-              Clear Search
-            </button>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search categories..."
+          className="w-full mb-8 px-4 py-2 border bg-white border-blue-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        {loading ? (
+          <div className="text-center text-gray-500">Loading all categories...</div>
+        ) : filtered.length === 0 ? (
+          <div className="text-center py-16 text-gray-500 text-lg">
+            😕 No categories found for "<span className="font-semibold">{searchTerm}</span>"
+            <div className="mt-4">
+              <button
+                onClick={() => setSearchTerm('')}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              >
+                Clear Search
+              </button>
+            </div>
           </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+  {filtered.map((cat) => (
+    <Link
+      to={`/exams/${cat.id}`}
+      key={cat.id}
+      className="relative bg-blue-50 border border-blue-100 rounded-[12px] shadow-lg hover:shadow-2xl transition overflow-hidden p-4"
+    >
+      <div className="flex flex-col items-center h-full">
+        {cat.image_url && (
+          <img
+            src={cat.image_url}
+            alt={cat.name}
+            className="w-full h-36 object-cover rounded-md mb-3"
+          />
+        )}
+        <h3 className="text-sm sm:text-base font-semibold text-center text-gray-800 mb-2">
+          {cat.name}
+        </h3>
+
+        {/* Explore More button full-width and animated */}
+        <div className="mt-auto w-full">
+          <span className="w-full block px-3 py-1 text-sm font-medium text-white text-center bg-blue-600 rounded-[12px] shadow-md animate-textloop">
+            <span className="inline-block animate-textloop">Explore More</span>
+          </span>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filtered.map((cat) => (
-            <Link
-              to={`/category/${cat.id}`}
-              key={cat.id}
-              className="relative group border-2 border-transparent rounded-xl p-4 bg-white shadow hover:shadow-xl transform hover:-translate-y-1 transition overflow-hidden flex flex-col justify-between"
-            >
-              <div className="absolute inset-0 border-2 border-transparent rounded-xl animate-spin-slow border-gradient group-hover:border-animated"></div>
-              <div className="relative z-10 flex flex-col h-full items-center justify-between">
-                {cat.image_url && (
-                  <img
-                    src={cat.image_url}
-                    alt={cat.name}
-                    className="w-full h-32 object-cover rounded-md mb-2"
-                  />
-                )}
-                <h3 className="font-semibold text-gray-700 text-center text-sm sm:text-base">
-                  {cat.name}
-                </h3>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
+      </div>
+    </Link>
+  ))}
+</div>
+
+        )}
+      </div>
+
+      <style>{`
+        @keyframes fadeLoop {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.85;
+            transform: scale(1.03);
+          }
+        }
+
+        .animate-fadeLoop {
+          animation: fadeLoop 2s ease-in-out infinite;
+        }
+
+        @keyframes border-animated {
+          0% { border-color: #3b82f6; }
+          100% { border-color: #60a5fa; }
+        }
+
+        .border-gradient {
+          border-image: linear-gradient(to right, #3b82f6, #60a5fa) 1;
+        }
+      `}</style>
     </div>
   );
 }

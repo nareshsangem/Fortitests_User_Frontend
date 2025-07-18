@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaChartLine, FaBookOpen, FaUsers, FaRocket } from 'react-icons/fa';
-import HomeNavbar from '../Components/HomeNavbar';
-import HomeFooter from '../Components/HomeFooter';
-function AboutUsPage() {
+import Navbar from '../Components/Navbar';
+import LandingPageFooter from '../Components/LandingPageFooter';
+function LandingAboutUsPage() {
   return (
     <div>
-      <HomeNavbar />
+      <Navbar />
 
       <div className="bg-blue-50 text-gray-800">
         {/* Hero Section */}
@@ -98,7 +98,7 @@ function AboutUsPage() {
         </div>
 
         {/* Who We Serve */}
-        <div className="max-w-5xl mx-auto px-4 py-16">
+        <div className=" max-w-5xl mx-auto px-4 py-16">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -120,7 +120,7 @@ function AboutUsPage() {
         </div>
 
         {/* Why Choose Us */}
-        <div className="bg-blue-200 py-16">
+        <div className="bg-blue-50 py-16">
           <div className="max-w-5xl mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0 }}
@@ -151,7 +151,7 @@ function AboutUsPage() {
         </div>
 
         {/* CTA */}
-        <div className="py-16 text-center bg-blue-700 text-white">
+        <div className="py-16 text-center bg-blue-500 text-white">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -164,15 +164,15 @@ function AboutUsPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.location.href = '/home'}
-            className="bg-blue-50 text-blue-700 font-semibold px-6 py-3 rounded-xl shadow hover:bg-gray-100"
+            className="bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl shadow hover:bg-gray-100"
           >
             Start Practicing Now
           </motion.button>
         </div>
       </div>
-      <HomeFooter />
+      <LandingPageFooter/>
     </div>
   );
 }
 
-export default AboutUsPage;
+export default LandingAboutUsPage;

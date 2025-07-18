@@ -100,7 +100,8 @@ FortiTests is an independent educational platform offering practice tests for co
         <div>
           <h3 className="text-lg font-semibold mb-3">About</h3>
           <ul className="space-y-1 text-sm">
-            <li><a href="/about" className="hover:text-white">About Us</a></li>
+            <li><a href="/landing-about" className="hover:text-white">About Us</a></li>
+            <li><a href="#" className="hover:text-white">Blog</a></li>
           </ul>
         </div>
 

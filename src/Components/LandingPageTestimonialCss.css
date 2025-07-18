@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+.testimonial-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #8dd5f3;
+  gap: 2rem;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.testimonial-image-con {
+  min-width: 55vw;
+  max-width: 55vw;
+}
+
+.testimonial-image {
+  min-width: 100%;
+  max-width: 100%;
+  height: 71vh;
+  object-fit: cover;
+}
+
+.testimonial-content {
+  flex: 1 1 400px;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  min-width: auto;
+  max-width: 34vw;
+  
+}
+
+.quote-icon {
+  font-size: 1.5rem;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.testimonial-content h1 {
+  font-size: clamp(1.5rem, 3vw + 1rem, 2rem);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.testimonial-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.arrow-container {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.arrow {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s ease;
+}
+
+.arrow:hover {
+  scale: 1.2;
+}
+
+.arrow-disabled {
+  color: gray;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .testimonial-container {
+    flex-direction: column;
+    background-color: #dff4fd;
+  }
+
+  .testimonial-image-con {
+    min-width: 100vw;
+    max-width: 100vw;
+  }
+
+  .testimonial-image {
+    max-width: 100vw;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .testimonial-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    max-width: 100vw;
+    font-weight: 600;
+  }
+
+  .arrow-container {
+    justify-content: center;
+  }
+
+  .testimonial-content h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .testimonial-content p {
+    font-size: 0.95rem;
+  }
+}

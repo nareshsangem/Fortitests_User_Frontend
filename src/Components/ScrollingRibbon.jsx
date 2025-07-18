@@ -1,10 +1,10 @@
 export default function ScrollingRibbon() {
   return (
-    <div className="relative w-full overflow-hidden bg-yellow-100 border-y border-yellow-300">
+    <div className="relative w-full overflow-hidden bg-yellow-100 border-y border-yellow-100">
       <div className="scroll-container">
         <div className="scroll-text">
-          🎯 Welcome to FortiTests! Practice regularly to boost your scores and stay ahead in your preparation. ✨ Daily tests available now! 🚀 Upgrade for more features. &nbsp;&nbsp;&nbsp;&nbsp;
-          🎯 Welcome to FortiTests! Practice regularly to boost your scores and stay ahead in your preparation. ✨ Daily tests available now! 🚀 Upgrade for more features.
+          🆕 New Mock Tests Added for SSC CGL, RRB Group D, TSPSC AE, and IBPS PO! 🚀 Practice Now — 100% Free with Instant Results & PDF Reports! &nbsp;&nbsp;&nbsp;&nbsp;
+          🆕 New Mock Tests Added for SSC CGL, RRB Group D, TSPSC AE, and IBPS PO! 🚀 Practice Now — 100% Free with Instant Results & PDF Reports!
         </div>
       </div>
 

@@ -1,95 +1,96 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import ProfileSidebar from './ProfileSidebar';
+import React, { useState, } from 'react';
+import { BookOpen, Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-function Navbar() {
+
+function LandingNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
   
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Tests', href: '/tests' },
-    { name: 'My Results', href: '/results' },
-    { name: 'Leader Board', href: '/leaderboard' },
-  ];
 
-  useEffect(() => {
-    axios
-      .get('/user/profile', { withCredentials: true })
-      .then((res) => setUser(res.data.user))
-      .catch(() => setUser(null));
-  }, []);
+  const isActive = (path) => location.pathname.startsWith(path);
+
+  const linkClass = (path) =>
+    `font-medium px-2 py-1 rounded transition ${
+      isActive(path)
+        ? 'text-yellow-300 '
+        : 'hover:text-yellow-300'
+    }`;
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <nav className="bg-blue-600 shadow-md fixed top-0 w-full z-50 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        {/* Logo & Brand */}
-        <Link to="/" className="flex items-center">
-          <img src="/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
-          <span className="text-xl font-bold text-blue-600">FortiTests</span>
+        {/* Logo + Title */}
+        <Link to="/" className="flex items-center gap-2">
+          <BookOpen className="h-6 w-6 text-yellow-300" />
+          <span className="text-xl font-bold text-white">Government Exams</span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex space-x-6 items-center">
-          {navLinks.map((link) => (
-            <Link key={link.name} to={link.href} className="text-gray-700 hover:text-blue-600 font-medium">
-              {link.name}
-            </Link>
-          ))}
+        <div className="hidden lg:flex items-center space-x-6">
+          <Link to="/" >Home</Link>
+          <Link to="/all-categories" className={linkClass('/all-categories')}>All Categories</Link>
+          <Link to="/all-exams" className={linkClass('/all-exams')}>All Exams</Link>
+          <Link to="/landing-about" className={linkClass('/landing-about')}>About Us</Link>
+          <Link to="/blogs" className={linkClass('/blogs')}>Blogs</Link>
 
-          {user ? (
-            <ProfileSidebar user={user} />
-          ) : (
-            <>
-              <Link to="/login" className="text-blue-600 font-medium hover:underline">Login</Link>
-              <Link to="/register" className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">Register</Link>
-            </>
-          )}
+          
+            <button
+              onClick={() => navigate('/login')}
+              className="bg-yellow-400 text-blue-800 font-semibold px-4 py-1 rounded hover:bg-yellow-300"
+            >
+              Login / Register
+            </button>
+          
         </div>
 
-        {/* Hamburger Menu */}
-        <div className="md:hidden">
+        {/* Mobile Hamburger */}
+        <div className="lg:hidden">
           <button onClick={toggleMenu}>
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-md px-4 py-4 space-y-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              className="block text-gray-700 hover:text-blue-600 font-medium"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
-
-          {user ? (
-            <div className="flex items-center gap-2 mt-3">
-              <ProfileSidebar user={user} />
-            </div>
-          ) : (
-            <>
-              <Link to="/login" onClick={() => setMenuOpen(false)} className="text-blue-600 font-medium">Login</Link>
-              <Link to="/register" onClick={() => setMenuOpen(false)} className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">
-                Register
-              </Link>
-            </>
-          )}
-        </div>
-      )}
+      {/* Mobile Nav */}
+      <div
+        className={`lg:hidden bg-blue-700 text-white px-4 py-4 space-y-2 transition-all duration-300 ease-in-out ${
+          menuOpen ? 'block' : 'hidden'
+        }`}
+      >
+        <Link to="/" onClick={toggleMenu} className={`${linkClass('/')} block w-full text-left`}>
+          Home
+        </Link>
+        <Link to="/all-categories" onClick={toggleMenu} className={`${linkClass('/all-categories')} block w-full text-left`}>
+          All Categories
+        </Link>
+        <Link to="/all-exams" onClick={toggleMenu} className={`${linkClass('/all-exams')} block w-full text-left`}>
+          All Exams
+        </Link>
+        <Link to="/landing-about" onClick={toggleMenu} className={`${linkClass('/landing-about')} block w-full text-left`}>
+          About Us
+        </Link>
+        <Link to="/blogs" onClick={toggleMenu} className={`${linkClass('/blogs')} block w-full text-left`}>
+          Blogs
+        </Link>
+        
+          <button
+            onClick={() => {
+              navigate('/login');
+              setMenuOpen(false);
+            }}
+            className="block w-full text-left bg-yellow-400 text-blue-800 px-4 py-2 mt-2 rounded hover:bg-yellow-300 font-semibold"
+          >
+            Login / Register
+          </button>
+        
+      </div>
     </nav>
   );
 }
 
-export default Navbar;
+export default LandingNavbar;

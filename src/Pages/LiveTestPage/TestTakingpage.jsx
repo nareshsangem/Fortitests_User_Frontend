@@ -20,7 +20,8 @@ const TestTakingPage = () => {
   const [showQuitModal, setShowQuitModal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [subjectOpen, setSubjectOpen] = useState(false);
-
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [countdown, setCountdown] = useState(5);
   const attemptId = localStorage.getItem('attemptId');
 
   useEffect(() => {
@@ -93,7 +94,7 @@ const TestTakingPage = () => {
       markedForReview: marked[questionId] || false,
     };
     setAnswers((prev) => ({ ...prev, [questionId]: updated }));
-    if (onBlur || value?.answered) {
+    if (onBlur || value?.answered !== undefined)  {
       try {
         await api.post(`/attempt/saveAnswer/${attemptId}`, {
           question_id: questionId,
@@ -127,13 +128,34 @@ const TestTakingPage = () => {
     }
   };
 
+  const clearAnswer = async (questionId) => {
+  setAnswers((prev) => ({
+    ...prev,
+    [questionId]: {
+      selected: [],
+      answered: false,
+      markedForReview: marked[questionId] || false,
+      clear: true, // optional
+    },
+  }));
+
+  try {
+    await api.post(`/attempt/clearAnswer/${attemptId}`, {
+      attempt_id: attemptId,
+      question_id: questionId,
+    });
+  } catch (err) {
+    console.error('Clear answer failed:', err);
+  }
+};
+
   const handleSubmit = async () => {
     if (hasSubmitted) return;
     setHasSubmitted(true);
     try {
       await api.post(`/attempt/submitTest/${attemptId}`);
       localStorage.removeItem('attemptId');
-      navigate(`/test-results/${attemptId}`);
+      
     } catch (err) {
       console.error('Submit error:', err);
     }
@@ -168,13 +190,16 @@ const TestTakingPage = () => {
       {questions.map((q, i) => (
         <div key={q.id} id={`question-${i}`}>
           <QuestionCard
-            index={i}
-            question={q}
-            answer={answers[q.id] || {}}
-            setAnswer={(val, blur) => handleAnswer(q.id, val, blur)}
-            isMarked={marked[q.id] || false}
-            onMark={() => handleMark(q.id)}
-          />
+              key={q.id}
+              question={q}
+              index={i}
+              answer={answers[q.id]}
+              setAnswer={(ans) => handleAnswer(q.id, ans)}
+              isMarked={marked[q.id]}
+              onMark={() => handleMark(q.id)}
+              onClear={() => clearAnswer(q.id)} // ✅ this line adds clear functionality
+            />
+
         </div>
       ))}
     </div>
@@ -253,10 +278,25 @@ const TestTakingPage = () => {
         </div>
         <button
             onClick={async () => {
-              setShowSubmitModal(false);
-              await handleSubmit(); // ✅ trigger backend scoring and update
-              navigate(`/test-results/${attemptId}`);
-            }}
+  setShowSubmitModal(false);
+  setShowThankYou(true); // ✅ Show thank you modal
+
+  await handleSubmit(); // Save attempt
+
+  // ⏱ Start countdown from 5
+  setCountdown(5);
+  const interval = setInterval(() => {
+    setCountdown((prev) => {
+      if (prev <= 1) {
+        clearInterval(interval);
+        navigate(`/test-results/${attemptId}`);
+        return 0;
+      }
+      return prev - 1;
+    });
+  }, 1000);
+}}
+
             className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold"
           >
             Proceed to Results
@@ -323,6 +363,18 @@ const TestTakingPage = () => {
       </div>
     </div>
   )}
+  {showThankYou && (
+  <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-[90%] text-center space-y-4 animate-fade-in">
+      <div className="text-4xl">🎉</div>
+      <h2 className="text-2xl font-bold text-green-600">Thank You!</h2>
+      <p className="text-sm text-gray-700">You have successfully completed your test.</p>
+      <p className="text-base text-blue-600 font-semibold">Redirecting to your results in {countdown} seconds...</p>
+      <div className="text-xl animate-pulse">🧠 All the Best!</div>
+    </div>
+  </div>
+)}
+
 </div>
 
   );

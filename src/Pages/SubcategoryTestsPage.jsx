@@ -82,96 +82,110 @@ export default function SubcategoryTestsPage() {
   if (!user) return null;
 
   return (
-    <div>
-      <div>
-        <HomeNavbar/>
-        </div>
-    <div className="px-4 py-8 max-w-[95%] mx-auto">
+  <div className="bg-gradient-to-r from-blue-50 to-sky-100 min-h-screen">
+    <HomeNavbar />
+
+    <div className="px-4 py-10 max-w-7xl mx-auto">
+      {/* Title and Back */}
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">All Tests</h1>
+        <h1 className="text-3xl font-bold text-blue-900 text-left w-full">All Tests</h1>
         <button
           onClick={() => navigate(-1)}
-          className="text-sm px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+          className="absolute right-4 md:right-10 top-24 md:top-20 text-sm px-4 py-2 bg-blue-300 text-blue-800 rounded hover:bg-blue-400 transition"
         >
           ← Back
         </button>
       </div>
 
-      {/* Search and Sort */}
+      {/* Search + Sort */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search tests..."
-          className="w-full md:w-1/2 px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full md:w-1/2 px-4 py-2 border bg-white border-blue-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 py-2 border bg-white border-blue-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="latest">Sort by Latest</option>
           <option value="order">Sort by Order Number</option>
         </select>
       </div>
 
-      {/* Mobile-only Filter */}
+      {/* Mobile Filter */}
       <div className="block md:hidden mb-6">
-        
         <select
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
-          className="w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border border-blue-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="all">Show All</option>
           <option value="pyq">Previous Year Questions</option>
           <option value="mock">Mock Tests</option>
-          <option value="suject wise">Subject-Wise Tests</option>
+          <option value="subject wise">Subject-Wise Tests</option>
         </select>
       </div>
 
-      {/* Responsive Layout */}
+      {/* Loader or Test Cards */}
       {loading ? (
         <div className="text-center text-gray-500">Loading tests...</div>
       ) : (
-        <>
-          {/* All 3 sections for md+ or filtered one for sm */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(selectedType === 'all' || selectedType === 'pyq') && (
-              <div >
-                <h2 className="text-xl  font-semibold text-blue-700 mb-4">Previous Year Papers</h2>
-                {previousTests.length === 0 ? (
-                  <p className="text-sm text-gray-500">No tests found.</p>
-                ) : (
-                  previousTests.map(renderTestCard)
-                )}
-              </div>
-            )}
-            {(selectedType === 'all' || selectedType === 'mock') && (
-              <div>
-                <h2 className="text-xl font-semibold text-blue-700 mb-4">Mock Tests</h2>
-                {mockTests.length === 0 ? (
-                  <p className="text-sm text-gray-500">No tests found.</p>
-                ) : (
-                  mockTests.map(renderTestCard)
-                )}
-              </div>
-            )}
-            {(selectedType === 'all' || selectedType === 'subject wise') && (
-              <div>
-                <h2 className="text-xl font-semibold text-blue-700 mb-4">Subject-Wise Tests</h2>
-                {subjectTests.length === 0 ? (
-                  <p className="text-sm text-gray-500">No tests found.</p>
-                ) : (
-                  subjectTests.map(renderTestCard)
-                )}
-              </div>
-            )}
-          </div>
-        </>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* PYQs */}
+          {(selectedType === 'all' || selectedType === 'pyq') && (
+            <div>
+              <h2 className="text-xl font-semibold text-blue-700 text-center mb-4">
+                Previous Year Papers
+              </h2>
+              {previousTests.length === 0 ? (
+                <p className="text-sm text-gray-500 text-center">No tests found.</p>
+              ) : (
+                <div className="flex flex-col items-center gap-4">
+                  {previousTests.map(renderTestCard)}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Mocks */}
+          {(selectedType === 'all' || selectedType === 'mock') && (
+            <div>
+              <h2 className="text-xl font-semibold text-blue-700 text-center mb-4">
+                Mock Tests
+              </h2>
+              {mockTests.length === 0 ? (
+                <p className="text-sm text-gray-500 text-center">No tests found.</p>
+              ) : (
+                <div className="flex flex-col items-center gap-4">
+                  {mockTests.map(renderTestCard)}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Subject Wise */}
+          {(selectedType === 'all' || selectedType === 'subject wise') && (
+            <div>
+              <h2 className="text-xl font-semibold text-blue-700 text-center mb-4">
+                Subject-Wise Tests
+              </h2>
+              {subjectTests.length === 0 ? (
+                <p className="text-sm text-gray-500 text-center">No tests found.</p>
+              ) : (
+                <div className="flex flex-col items-center gap-4">
+                  {subjectTests.map(renderTestCard)}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       )}
     </div>
-    </div>
-  );
+  </div>
+);
+
 }
