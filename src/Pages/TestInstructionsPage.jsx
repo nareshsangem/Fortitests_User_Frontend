@@ -93,7 +93,9 @@ const TestInstructionsPage = () => {
   const confirmClose = () => navigate('/test-closed');
   const cancelClose = () => setShowCloseModal(false);
 
-  if (!test) return <div className="p-6">Loading test details...</div>;
+  if (!test) return <div className="flex justify-center py-10">
+              <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>;
 
   return (
     <div className="min-h-screen bg-blue-100 p-6 relative">

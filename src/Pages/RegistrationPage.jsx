@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import api from "../api";
 import { successToast, errorToast } from "../toast";
 
@@ -14,12 +15,14 @@ export default function RegisterPage() {
     agreedToTerms: false,
     otp: ""
   });
-  
+
   const [otpSent, setOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [timer, setTimer] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   useEffect(() => {
     if (timer > 0) {
@@ -48,7 +51,7 @@ export default function RegisterPage() {
         mobile: form.mobile
       });
       setOtpSent(true);
-      setTimer(60);
+      setTimer(300); // 5 minutes
       successToast("OTP sent to your email and mobile");
     } catch (err) {
       setError(err.response?.data?.msg || "Failed to send OTP");
@@ -69,7 +72,7 @@ export default function RegisterPage() {
       setOtpVerified(true);
       successToast("OTP verified successfully");
     } catch (err) {
-      console.log(err)
+      console.log(err);
       setError("Invalid or expired OTP");
       errorToast("Invalid or expired OTP");
     } finally {
@@ -98,9 +101,15 @@ export default function RegisterPage() {
     }
   };
 
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60).toString().padStart(2, "0");
+    const secs = (seconds % 60).toString().padStart(2, "0");
+    return `${mins}:${secs}`;
+  };
+
   return (
-    <div className="min-h-screen bg-[#F1F3F6] flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md space-y-4">
+    <div className="min-h-screen bg-blue-100 flex items-center justify-center">
+      <div className="bg-blue-50 p-8 rounded-2xl shadow-lg w-full max-w-md space-y-4 relative">
         <h2 className="text-2xl font-bold text-[#2874F0] text-center">Create Your FortiTests Account</h2>
 
         <input name="username" value={form.username} onChange={handleChange} placeholder="Username" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]" />
@@ -114,11 +123,26 @@ export default function RegisterPage() {
           <option>Other</option>
         </select>
 
-        <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]" />
+        <div className="relative">
+          <input
+            name="password"
+            type={showPassword ? "text" : "password"}
+            value={form.password}
+            onChange={handleChange}
+            placeholder="Password"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]"
+          />
+          <span onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-2.5 text-gray-500 cursor-pointer">
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
 
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" name="agreedToTerms" checked={form.agreedToTerms} onChange={handleChange} />
-          I agree to the <span className="text-[#2874F0] font-medium">Terms & Conditions</span>
+          I agree to the{" "}
+          <button type="button" className="text-[#2874F0] font-medium underline" onClick={() => setShowTermsModal(true)}>
+            Terms & Conditions
+          </button>
         </label>
 
         {!otpSent && (
@@ -134,8 +158,9 @@ export default function RegisterPage() {
               {loading ? "Verifying..." : "Verify OTP"}
             </button>
             <button onClick={() => timer === 0 && sendOtp()} disabled={timer > 0} className={`w-full mt-2 font-semibold py-2 rounded-lg transition ${timer > 0 ? "bg-gray-400 text-white" : "bg-yellow-500 text-white hover:bg-yellow-600"}`}>
-              {timer > 0 ? `Resend OTP in 0:${timer.toString().padStart(2, "0")}` : "Resend OTP"}
+              {timer > 0 ? `Resend OTP in ${formatTime(timer)}` : "Resend OTP"}
             </button>
+            <p className="text-red-600 text-sm text-center">OTP expires in: {formatTime(timer)}</p>
           </>
         )}
 
@@ -150,6 +175,28 @@ export default function RegisterPage() {
         <p className="text-center text-sm">
           Already have an account? <Link to="/login" className="text-[#2874F0] font-semibold">Login here</Link>
         </p>
+
+        {/* Terms Modal */}
+        {showTermsModal && (
+          <div className="fixed inset-0 bg-black/30 backdrop-blur z-50 flex items-center justify-center">
+            <div className="bg-white p-6 rounded-lg max-w-lg w-full relative">
+              <h3 className="text-xl font-bold mb-2 text-[#2874F0]">Terms & Conditions</h3>
+              <div className="text-sm max-h-72 overflow-y-auto text-gray-700">
+                <p>By registering for FortiTests, you agree to our terms of use including but not limited to:</p>
+                <ul className="list-disc list-inside mt-2 space-y-1">
+                  <li>Your data is securely stored and not shared with third parties.</li>
+                  <li>You will not attempt to cheat or misuse testing tools provided.</li>
+                  <li>We may contact you via email/SMS for updates and exam tips.</li>
+                  <li>Violation of terms may lead to account suspension.</li>
+                </ul>
+                <p className="mt-4">For full details, please visit our official Terms & Conditions page.</p>
+              </div>
+              <button onClick={() => setShowTermsModal(false)} className="mt-4 px-4 py-2 bg-[#2874F0] text-white rounded hover:bg-blue-600">
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

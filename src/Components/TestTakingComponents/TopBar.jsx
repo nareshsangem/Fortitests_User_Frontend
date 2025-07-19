@@ -43,8 +43,8 @@ const TopBar = ({ title, timeLeft, subjects = [], toggleSidebar }) => {
             Subjects
           </button>
           {showSubjects && (
-            <div className="absolute right-0 mt-2 bg-white text-gray-800 border shadow-md rounded w-48 z-50">
-              <ul className="text-sm p-2 space-y-1 max-h-48 overflow-y-auto">
+            <div className="absolute right-0 mt-2 bg-blue-50 text-gray-800 border shadow-md rounded w-36 z-50">
+              <ul className="text-sm  font-semibold p-2 space-y-1 max-h-auto overflow-y-auto">
                 {subjects.length > 0 ? (
                   subjects.map((subj, i) => (
                     <li key={i} className="border-b last:border-b-0 py-1">{subj}</li>

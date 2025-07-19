@@ -12,7 +12,7 @@ const TestTakingPage = () => {
   const [test, setTest] = useState(null);
   const [answers, setAnswers] = useState({});
   const [marked, setMarked] = useState({});
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -81,10 +81,11 @@ const TestTakingPage = () => {
   }, []);
 
   useEffect(() => {
-    if (timeLeft === 0 && test?.status === 'in_progress') {
-      handleSubmit();
-    }
-  }, [timeLeft, test]);
+  if (timeLeft === 0) {
+    
+    setShowSubmitModal(true);
+  }
+}, [timeLeft, test]);
 
 
   const handleAnswer = async (questionId, value, onBlur = false) => {
@@ -337,7 +338,7 @@ const TestTakingPage = () => {
   )}
 
   {showQuitModal && (
-    <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-md w-[90%] max-w-md shadow-lg text-center">
         <h2 className="text-xl font-bold mb-4 text-gray-800">Quit Test?</h2>
         <p className="text-sm text-gray-600">

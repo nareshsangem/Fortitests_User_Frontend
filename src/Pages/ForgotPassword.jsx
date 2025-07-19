@@ -75,9 +75,9 @@ export default function ForgotPasswordPage() {
   const resendOtp = () => sendOtp();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-blue-100 px-4">
       <Toaster position="top-center" />
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-md p-6 space-y-6">
+      <div className="max-w-md w-full bg-blue-50 rounded-2xl shadow-md p-6 space-y-6">
         <h2 className="text-2xl font-bold text-center text-blue-700">
           Forgot Password
         </h2>

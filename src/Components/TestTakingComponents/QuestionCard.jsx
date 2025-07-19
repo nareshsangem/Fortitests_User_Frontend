@@ -46,7 +46,7 @@ const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMar
         <img
           src={question.image}
           alt="question-img"
-          className="mb-4 max-h-64 object-contain rounded"
+          className="mb-4 max-h-64  object-contain rounded"
         />
       )}
 

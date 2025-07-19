@@ -38,7 +38,9 @@ const TestResultsPage = () => {
   }, [attemptId]);
 
   if (loading) {
-    return <div className="p-6">Loading results...</div>;
+    return <div className="flex justify-center py-10">
+              <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>;
   }
 
   const formatTime = (timeObj) => {

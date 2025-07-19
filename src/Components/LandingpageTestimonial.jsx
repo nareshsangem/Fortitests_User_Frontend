@@ -24,7 +24,7 @@ const testimonials = [
   {
     id: 3,
     image: testimonial3,
-    quote: "Honest, Instant Results",
+    quote: "Instant Results",
     author:
       "“The moment I clicked ‘Submit Test’, I received a detailed result with correct answers, explanation (where available), and my total score. There was no delay or signup wall. That instant feedback helped me revise smarter, not harder.”",
   },

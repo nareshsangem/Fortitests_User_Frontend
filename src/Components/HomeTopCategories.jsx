@@ -23,7 +23,9 @@ export default function TopCategories() {
   }, []);
 
   if (loading) {
-    return <div className="text-center py-10 text-gray-500">Loading top categories...</div>;
+    return (<div className="flex justify-center py-10">
+              <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>);
   }
 
   return (

@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
 import { toast, Toaster } from "react-hot-toast";
-import { useUser } from "../context/UserContext"; // ✅ Import the context
+import { useUser } from "../context/UserContext";
+import { Eye, EyeOff } from "lucide-react"; // ✅ Eye icons
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { setUser } = useUser(); // ✅ Use the context setter
+  const { setUser } = useUser();
   const [form, setForm] = useState({ identifier: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // ✅ State for toggle
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,7 +25,7 @@ export default function LoginPage() {
 
       if (res.data.success) {
         toast.success("Login successful!");
-        setUser(res.data.user); // ✅ This is the key line to add
+        setUser(res.data.user);
         localStorage.setItem("fortitests_user", JSON.stringify(res.data.user));
         setTimeout(() => {
           navigate("/home");
@@ -40,10 +42,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-blue-100 px-4">
       <Toaster position="top-center" reverseOrder={false} />
 
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-md p-6 space-y-6">
+      <div className="max-w-md w-full bg-blue-50 rounded-2xl shadow-md p-6 space-y-6">
         <h2 className="text-2xl font-bold text-center text-blue-700">Login to FortiTests</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -56,15 +58,26 @@ export default function LoginPage() {
             className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring focus:border-blue-500"
             required
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring focus:border-blue-500"
-            required
-          />
+
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring focus:border-blue-500 pr-10"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+              tabIndex={-1}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
 
           <button
             type="submit"

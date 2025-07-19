@@ -76,7 +76,9 @@ export default function SubCategoryPage() {
         />
 
         {loading ? (
-          <div className="text-center text-gray-500">Loading subcategories...</div>
+          <div className="flex justify-center py-10">
+              <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>
         ) : filtered.length === 0 ? (
           <div className="text-center text-gray-500 py-16">
             😕 No subcategories found for "<span className="font-semibold">{search}</span>"

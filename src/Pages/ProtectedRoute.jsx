@@ -5,9 +5,11 @@ import { useUser } from '../context/UserContext';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useUser();
-  if (loading) return <div className="text-center py-20">Loading...</div>;
+  if (loading) return <div className="flex justify-center py-10">
+              <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>;
 
-  return user ? children : <Navigate to="/login" />;
+  return user ? children : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;

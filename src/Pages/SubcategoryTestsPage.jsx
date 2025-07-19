@@ -132,8 +132,9 @@ export default function SubcategoryTestsPage() {
 
       {/* Loader or Test Cards */}
       {loading ? (
-        <div className="text-center text-gray-500">Loading tests...</div>
-      ) : (
+        <div className="flex justify-center py-10">
+              <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>      ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* PYQs */}
           {(selectedType === 'all' || selectedType === 'pyq') && (
