@@ -1,15 +1,15 @@
 import React from "react";
 import Navbar from '../Components/Navbar';
 import LandingPageFooter from '../Components/LandingPageFooter';
-import blog1 from "../src/assets/blog1.jpeg";
-import blog2 from "../src/assets/blog2.jpeg";
-import blog3 from "../src/assets/blog3.jpeg";
-import blog4 from "../src/assets/blog4.jpeg";
-import blog5 from "../src/assets/blog5.jpeg";
-import blog6 from "../src/assets/blog6.jpeg";
-import blog7 from "../src/assets/blog7.jpeg";
-import blog8 from "../src/assets/blog8.jpeg";
-import blog9 from "../src/assets/blog9.jpeg";
+import blog1 from "../assets/blog1.jpeg";
+import blog2 from "../assets/blog2.jpeg";
+import blog3 from "../assets/blog3.jpeg";
+import blog4 from "../assets/blog4.jpeg";
+import blog5 from "../assets/blog5.jpeg";
+import blog6 from "../assets/blog6.jpeg";
+import blog7 from "../assets/blog7.jpeg";
+import blog8 from "../assets/blog8.jpeg";
+import blog9 from "../assets/blog9.jpeg";
 const blogData = [
   {
     id: 1,
