@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { toast } from 'react-toastify';
 import { useUser } from '../context/UserContext';
-import HomeNavbar from '../components/HomeNavbar';
+import HomeNavbar from '../Components/HomeNavbar';
 
 
 export default function SubcategoryTestsPage() {
