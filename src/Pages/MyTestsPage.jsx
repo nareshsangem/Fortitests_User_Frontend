@@ -81,7 +81,7 @@ function MyTestsPage() {
               >
                 <div>
                   <div  className='flex flex-row justify-between items-center'>
-                  <p className="text-blue-700 font-bold mb-1">{attempt.test_name}</p>
+                  <p className="text-blue-700 font-bold mb-1">{attempt.test_name.toUpperCase()}</p>
                   <p className="text-sm text-gray-600">
                     Status: <span className={`font-semibold ${attempt.status === 'submitted' ? 'text-green-600' : 'text-yellow-500'}`}>
                       {attempt.status === 'submitted' ? 'Finished' : 'Not Finished'}

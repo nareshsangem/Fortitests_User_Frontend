@@ -31,7 +31,7 @@ const CookieConsentBanner = () => {
 
   return (
     <div
-      className={`fixed bottom-0 w-full bg-gray-900 text-white px-4 py-3 z-50 shadow-lg flex flex-col md:flex-row justify-between items-center gap-2
+      className={`fixed bottom-0 w-full h-30 bg-gray-900 text-white px-4 py-3 z-50 shadow-lg flex flex-col md:flex-row justify-between items-center gap-2
         transition-all duration-400 ease-in-out
         ${animateOut ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}
     >

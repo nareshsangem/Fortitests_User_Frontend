@@ -107,7 +107,7 @@ export default function SubCategoryPage() {
                     />
                   )}
                   <h3 className="text-sm sm:text-base font-semibold text-center text-gray-800 mb-3">
-                    {sub.name}
+                    {sub.name.toUpperCase()}
                   </h3>
                   <Link
                     to={`/subcategories/${sub.id}/tests`}

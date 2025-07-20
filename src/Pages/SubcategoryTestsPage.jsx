@@ -67,7 +67,7 @@ export default function SubcategoryTestsPage() {
       key={test.id}
       className="mb-4 w-60 p-3 border rounded shadow bg-white flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-md"
     >
-      <h3 className="text-base font-semibold text-gray-800 mb-2 text-center">{test.name}</h3>
+      <h3 className="text-base font-semibold text-gray-800 mb-2 text-center">{test.name.toUpperCase()}</h3>
       <p className="text-sm font-bold text-gray-700 text-center">
         {test.duration_minutes} min • {test.total_questions} Q • {test.total_marks} Marks
       </p>

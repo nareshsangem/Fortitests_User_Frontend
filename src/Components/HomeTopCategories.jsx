@@ -53,7 +53,7 @@ export default function TopCategories() {
                   />
                 )}
                 <h3 className="text-sm sm:text-base font-semibold text-center text-gray-800 mb-2">
-                  {cat.name}
+                  {cat.name.toUpperCase()}
                 </h3>
 
                 {/* Explore button with glow loop animation */}

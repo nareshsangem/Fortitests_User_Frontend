@@ -98,7 +98,7 @@ const LandingPageSubcategoriesByCategory = () => {
                     />
                   )}
                   <h3 className="text-sm sm:text-base font-semibold text-center text-gray-800 mb-3">
-                    {sub.name}
+                    {sub.name.toUpperCase()}
                   </h3>
                   <span className="w-full block px-3 py-1.5 text-sm font-medium text-white text-center bg-blue-600 rounded-[12px] shadow-md animate-textloop">
                     Explore Tests

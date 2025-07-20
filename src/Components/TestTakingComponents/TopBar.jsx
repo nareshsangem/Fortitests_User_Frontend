@@ -13,7 +13,7 @@ const TopBar = ({ title, timeLeft, subjects = [], toggleSidebar }) => {
     <div className="w-full bg-blue-600 text-white py-3 px-4 flex justify-between items-center shadow-md fixed top-0 z-50 h-[60px]">
       {/* Left: Test Title */}
       <div className="text-sm sm:text-base font-semibold truncate max-w-[40%]">
-        {title}
+        {title.toUpperCase()}
       </div>
 
       {/* Middle: Subjects (scrollable in desktop, toggle in mobile) */}
@@ -25,7 +25,7 @@ const TopBar = ({ title, timeLeft, subjects = [], toggleSidebar }) => {
               key={i}
               className="text-xs bg-white text-blue-600 px-2 py-0.5 rounded whitespace-nowrap font-medium"
             >
-              {subj}
+              {subj.toUpperCase()}
             </span>
           ))
         ) : (

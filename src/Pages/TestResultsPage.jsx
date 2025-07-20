@@ -75,7 +75,7 @@ const TestResultsPage = () => {
 
       {/* Test Info */}
       <div className="border p-4 rounded bg-blue-600 text-white flex flex-col md:flex-row justify-between items-center shadow-sm">
-        <h1 className="text-2xl font-bold text-center md:text-left">{testInfo.name} - Results</h1>
+        <h1 className="text-2xl font-bold text-center md:text-left">{testInfo.name.toUpperCase()} - Results</h1>
         <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-0 text-sm">
           <div>Total Score: <strong>{results.totalScore} / {results.totalMarks}</strong></div>
           <div>Time Taken: <strong>{formatTime(results.timeTaken)}</strong></div>

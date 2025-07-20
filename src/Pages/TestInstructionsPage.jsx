@@ -102,7 +102,7 @@ const TestInstructionsPage = () => {
       {/* Header */}
       <div className="flex justify-between items-center border-b pb-2 mb-4">
         <div className="bg-blue-50 px-4 py-2 rounded text-lg font-semibold text-blue-700 border border-blue-200">
-          Test Name: {test.name}
+          Test Name: {test.name.toUpperCase()}
         </div>
         <button onClick={() => setShowCloseModal(true)} className="text-red-600 text-xl">✖</button>
       </div>
@@ -126,7 +126,7 @@ const TestInstructionsPage = () => {
             </tr>
             <tr className="border-b">
               <td className="py-2 font-medium">Language</td>
-              <td className="py-2">{test.language}</td>
+              <td className="py-2">{test.language.upperCase()}</td>
             </tr>
             <tr className="border-b">
               <td className="py-2 font-medium">Subjects</td>

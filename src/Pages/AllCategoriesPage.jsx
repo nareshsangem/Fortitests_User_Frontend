@@ -101,7 +101,7 @@ export default function AllCategoriesPage() {
           />
         )}
         <h3 className="text-sm sm:text-base font-semibold text-center text-gray-800 mb-2">
-          {cat.name}
+          {cat.name.toUpperCase()}
         </h3>
 
         {/* Explore More button full-width and animated */}
