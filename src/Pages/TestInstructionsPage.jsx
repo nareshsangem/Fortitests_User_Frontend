@@ -52,7 +52,7 @@ const TestInstructionsPage = () => {
       const subjects = typeof test.subjects === 'string'
         ? JSON.parse(test.subjects)
         : test.subjects;
-      return Array.isArray(subjects) ? subjects.join(', ') : 'N/A';
+      return Array.isArray(subjects) ? subjects.join(', ').toUpperCase() : 'N/A';
     } catch (err) {
       console.error('Error parsing subjects:', err);
       return 'N/A';
@@ -102,7 +102,7 @@ const TestInstructionsPage = () => {
       {/* Header */}
       <div className="flex justify-between items-center border-b pb-2 mb-4">
         <div className="bg-blue-50 px-4 py-2 rounded text-lg font-semibold text-blue-700 border border-blue-200">
-          Test Name: {test.name.toUpperCase()}
+          Test Name: {test.name}
         </div>
         <button onClick={() => setShowCloseModal(true)} className="text-red-600 text-xl">✖</button>
       </div>
@@ -126,7 +126,7 @@ const TestInstructionsPage = () => {
             </tr>
             <tr className="border-b">
               <td className="py-2 font-medium">Language</td>
-              <td className="py-2">{test.language.upperCase()}</td>
+              <td className="py-2">{test.language.toUpperCase()}</td>
             </tr>
             <tr className="border-b">
               <td className="py-2 font-medium">Subjects</td>
