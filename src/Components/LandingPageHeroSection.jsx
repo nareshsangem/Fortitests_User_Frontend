@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import hero_img from '..src/assets/hero66.png'
 function HeroSection() {
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ function HeroSection() {
         {/* Right Image Section */}
         <div className="flex justify-center">
           <img
-            src="../src/assets/hero66.png"
+            src={hero_img}
             alt="Students preparing"
             className="w-full max-w-md h-100%"
           />

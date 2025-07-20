@@ -1,38 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import blog1 from "../assets/blog1.jpeg";
+import blog2 from "../assets/blog2.jpeg";
+import blog3 from "../assets/blog3.jpeg";
+import blog4 from "../assets/blog4.jpeg";
+import blog5 from "../assets/blog5.jpeg";
 const insights = [
   {
     id: 1,
-    image: "../src/assets/blog1.jpeg",
+    image: blog1,
     title: "The Power of Mock Tests: Practice with Purpose",
     text: "Mock tests simulate real exam conditions and boost your confidence with detailed post-test analysis.",
     published: "Jan 5, 2025",
   },
   {
     id: 2,
-    image: "../src/assets/blog2.jpeg",
+    image: blog2,
     title: "My SSC Journey: From Beginner to Top Scorer",
     text: "How consistent mock tests, error reviews, and performance tracking helped me score 178 in Tier-1.",
     published: "Feb 12, 2025",
   },
   {
     id: 3,
-    image: "../src/assets/blog3.jpeg",
+    image: blog3,
     title: "TSPSC 2025: Tackle the Latest Pattern with Confidence",
     text: "Our TSPSC mock series reflects new patterns and trains you for real-time performance and accuracy.",
     published: "Mar 3, 2025",
   },
   {
     id: 4,
-    image: "../src/assets/blog4.jpeg",
+    image: blog4,
     title: "How This Platform Helps You Learn from Mistakes",
     text: "Use analytics to spot your weak areas, learn from past errors, and improve with targeted retests.",
     published: "Mar 22, 2025",
   },
   {
     id: 5,
-    image: "../src/assets/blog5.jpeg",
+    image: blog5,
     title: "Building Confidence Before Exam Day: A Real User’s Story",
     text: "Through consistent mocks and realistic practice, one student overcame anxiety and faced exams head-on.",
     published: "May 10, 2025",

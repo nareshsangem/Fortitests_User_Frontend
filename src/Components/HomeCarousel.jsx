@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-
+import hero_img from "../src/assets/hero66.png"
 export default function HomeCarousel() {
   return (
     <section className="bg-gradient-to-r from-blue-50 to-sky-100 py-10 md:py-20">
@@ -38,7 +38,7 @@ export default function HomeCarousel() {
         {/* Right: Illustration */}
         <div className="flex-1 flex justify-center md:justify-end">
           <img
-            src="../src/assets/hero66.png"
+            src={hero_img}
             alt="Student practicing mock tests"
             className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full  "
           />
