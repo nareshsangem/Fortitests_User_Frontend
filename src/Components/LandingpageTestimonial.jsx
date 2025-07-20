@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./LandingPageTestimonialCss.css"
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
-import testimonial1 from "../Assets/testimonial1.jpeg";
-import testimonial2 from "../Assets/testimonial2.jpeg";
-import testimonial3 from "../Assets/testimonial3.jpeg";
+import testimonial1 from "../assets/testimonial1.jpeg";
+import testimonial2 from "../assets/testimonial2.jpeg";
+import testimonial3 from "../assets/testimonial3.jpeg";
 
 const testimonials = [
   {
