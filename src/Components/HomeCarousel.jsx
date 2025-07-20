@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import hero_img from "../src/assets/hero66.png"
+import hero_img from "../assets/hero66.png"
 export default function HomeCarousel() {
   return (
     <section className="bg-gradient-to-r from-blue-50 to-sky-100 py-10 md:py-20">
