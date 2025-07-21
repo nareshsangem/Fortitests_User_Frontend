@@ -47,7 +47,7 @@ function HomeNavbar() {
 
         {/* Left: Logo */}
         <Link to="/home" className="flex items-center gap-2 p-1 text-4xl text-amber-300 font-bold">
-          <img src="/awm1.png" alt="Ace With Mock" className='w-auto h-12'/>
+          <img src="/logo2.png" alt="Ace With Mock" className='w-auto h-12'/>
           <span className="hidden sm:inline">Ace With Mock</span>
         </Link>
 
