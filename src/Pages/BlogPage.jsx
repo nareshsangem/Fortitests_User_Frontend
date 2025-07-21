@@ -19,7 +19,7 @@ const blogData = [
     image: blog1,
     content: `When you prepare for competitive exams like SSC, TSPSC, or Banking, mock tests aren't optional—they're essential. A mock test is more than just a score; it reflects your readiness, adaptability, and time strategy.
 
-Our platform’s mock tests mirror the real exam format. The timer, interface, and even negative marking rules are all aligned with official standards. Most importantly, detailed post-test analytics help you understand what you're doing right—and what needs work.
+AWM's mock tests mirror the real exam format. The timer, interface, and even negative marking rules are all aligned with official standards. Most importantly, detailed post-test analytics help you understand what you're doing right—and what needs work.
 
 Students who consistently attempt and review 10–15 mocks see a jump of 25–40% in accuracy and time efficiency. Practice may not make you perfect, but it will certainly make you confident.`,
     points: [
@@ -35,7 +35,7 @@ Students who consistently attempt and review 10–15 mocks see a jump of 25–40
     date: "Feb 12, 2025",
     subtitle: "Structured practice leads to massive improvement.",
     image: blog2,
-    content: `I still remember scoring 112 in my first SSC Tier-1 mock and feeling disheartened. But then I came across this platform. With structured practice sets, targeted revisions, and weekly challenges, I was able to climb to a Tier-1 score of 178.
+    content: `I still remember scoring 112 in my first SSC Tier-1 mock and feeling disheartened. But then I came across this AWM. With structured practice sets, targeted revisions, and weekly challenges, I was able to climb to a Tier-1 score of 178.
 
 The journey wasn’t overnight. I built a habit of giving one mock every 2 days, reviewing all errors, and attempting mini-topic tests in between. What made the biggest difference? The performance tracker. It showed me where I improved, where I didn’t, and kept me honest about my prep.`,
     points: [
@@ -63,7 +63,7 @@ Our TSPSC mock series has been redesigned to match the latest format. From subje
   },
   {
     id: 4,
-    title: "How This Platform Helps You Learn from Mistakes",
+    title: "How AWM Helps You Learn from Mistakes",
     date: "Mar 22, 2025",
     subtitle: "Turn every mistake into a learning moment.",
     image: blog4 ,
@@ -129,7 +129,6 @@ I used the analytics dashboard to track section-wise performance and prioritized
 Charts tracked my week-over-week improvement. I set up reminders to revisit weak topics. With color-coded heatmaps I could quickly see where I consistently lagged—making revision laser-focused. The integrated analytics dashboard was a game-changer.`,
     points: [
       "Subject-wise accuracy & time analysis",
-      "Peer-comparison leaderboard and percentiles",
       "Weekly heatmaps showing weak zones",
       "Automated reminders for low-score topics",
       "Revision streak tracking"

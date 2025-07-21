@@ -58,7 +58,7 @@ export default function WhyFortiTests() {
   return (
     <section className="bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 py-12 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why This Platform?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why This AWM?</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Discover what makes this platform to preferred for government job aspirants.
         </p>

@@ -40,7 +40,7 @@ const features = [
   {
     icon: <FaClock className="text-green-600 text-3xl" />,
     title: "Test with Timer & Navigation",
-    desc: "Real test interface with timer, section jump, and review.",
+    desc: "Real test interface with timer, question navigation, and review.",
   },
   {
     icon: <FaChartBar className="text-purple-600 text-3xl" />,
@@ -49,8 +49,8 @@ const features = [
   },
   {
     icon: <FaLockOpen className="text-teal-600 text-3xl" />,
-    title: "Free & Open Access",
-    desc: "No login or signup required — just start practicing!",
+    title: "Completely Free ",
+    desc: "Sign up and Login - Just start practice!",
   },
 ];
 
@@ -58,7 +58,7 @@ const LandingpageWhyUs = () => {
   return (
     <section id='why-us' className="bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 py-16 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Why Us?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Why AWM?</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Discover why thousands of learners choose us for government exam preparation.
         </p>

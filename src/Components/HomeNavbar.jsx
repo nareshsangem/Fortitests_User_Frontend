@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaUserCircle, FaBookOpen } from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
 import api from '../api';
 import { toast } from 'react-toastify';
 import { useUser } from '../context/UserContext';
-
+import logo from '../assets/awm1.png'
 function HomeNavbar() {
   const { user, setUser, loading } = useUser();
   const navigate = useNavigate();
@@ -46,9 +46,8 @@ function HomeNavbar() {
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:flex-nowrap">
 
         {/* Left: Logo */}
-        <Link to="/home" className="flex items-center gap-2 text-white text-xl font-bold">
-          <FaBookOpen className="text-4xl" />
-          <span>Government Exams</span>
+        <Link to="/home" className="flex items-center gap-2 p-1">
+          <img src={logo} alt="Ace With Mock" className='w-auto h-12'/>
         </Link>
 
         {/* Right: Nav Links + Profile */}

@@ -110,7 +110,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-blue-100 flex items-center justify-center">
       <div className="bg-blue-50 p-8 rounded-2xl shadow-lg w-full max-w-md space-y-4 relative">
-        <h2 className="text-2xl font-bold text-[#2874F0] text-center">Create Your FortiTests Account</h2>
+        <h2 className="text-2xl font-bold text-[#2874F0] text-center">Create AWM Account</h2>
 
         <input name="username" value={form.username} onChange={handleChange} placeholder="Username" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]" />
         <input name="email" value={form.email} onChange={handleChange} placeholder="Email (@gmail.com)" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]" />
@@ -182,7 +182,7 @@ export default function RegisterPage() {
             <div className="bg-white p-6 rounded-lg max-w-lg w-full relative">
               <h3 className="text-xl font-bold mb-2 text-[#2874F0]">Terms & Conditions</h3>
               <div className="text-sm max-h-72 overflow-y-auto text-gray-700">
-                <p>By registering for FortiTests, you agree to our terms of use including but not limited to:</p>
+                <p>By registering for AWM, you agree to our terms of use including but not limited to:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
                   <li>Your data is securely stored and not shared with third parties.</li>
                   <li>You will not attempt to cheat or misuse testing tools provided.</li>

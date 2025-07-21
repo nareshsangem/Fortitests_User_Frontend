@@ -46,7 +46,7 @@ export default function LoginPage() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <div className="max-w-md w-full bg-blue-50 rounded-2xl shadow-md p-6 space-y-6">
-        <h2 className="text-2xl font-bold text-center text-blue-700">Login to FortiTests</h2>
+        <h2 className="text-2xl font-bold text-center text-blue-700">Login to AWM</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

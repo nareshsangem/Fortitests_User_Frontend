@@ -30,7 +30,7 @@ const insights = [
   {
     id: 4,
     image: blog4,
-    title: "How This Platform Helps You Learn from Mistakes",
+    title: "How This AWM Helps You Learn from Mistakes",
     text: "Use analytics to spot your weak areas, learn from past errors, and improve with targeted retests.",
     published: "Mar 22, 2025",
   },

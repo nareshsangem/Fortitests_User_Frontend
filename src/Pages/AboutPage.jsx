@@ -17,7 +17,7 @@ function AboutUsPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl font-bold mb-2"
           >
-            About This Platform
+            About AWM - Ace With Mock
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ function AboutUsPage() {
           >
             <h2 className="text-3xl font-bold mb-4 text-center">Our Mission</h2>
             <p className="text-center text-gray-700 max-w-3xl mx-auto">
-              At This Platform, our mission is to make quality test preparation accessible and effective for every learner.
+              At AWM, our mission is to make quality test preparation accessible and effective for every learner.
               Whether you're preparing for school exams or competitive entrances, we help you practice smarter with real-exam environments,
               instant feedback, and deep analytics.
             </p>
@@ -71,7 +71,7 @@ function AboutUsPage() {
                 {
                   title: 'Completely Free',
                   icon: <FaRocket className="text-4xl text-blue-600 mb-4" />,
-                  desc: 'No paywalls. Practice anytime, anywhere — ad supported.'
+                  desc: 'No paywalls. Practice anytime, anywhere.'
                 },
                 {
                   title: 'Subject Wise Tracking',
@@ -128,7 +128,7 @@ function AboutUsPage() {
               transition={{ duration: 0.6 }}
               className="text-3xl font-bold mb-10 text-center"
             >
-              Why To Choose This Platform?
+              Why To Choose AWM?
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[

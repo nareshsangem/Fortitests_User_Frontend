@@ -12,7 +12,7 @@ const Footer = () => {
     if (type === "privacy") {
       title = "Privacy Policy";
       content = `
-At FortiTests, your privacy is extremely important to us. This Privacy Policy outlines how we collect, use, and protect your personal information.
+At AWM, your privacy is extremely important to us. This Privacy Policy outlines how we collect, use, and protect your personal information.
 
 1. Information We Collect:
    - Email address, phone number, and username when you sign up
@@ -33,17 +33,17 @@ At FortiTests, your privacy is extremely important to us. This Privacy Policy ou
    - Stored securely using industry-standard security protocols
 
 5. User Rights:
-   - You may access, update, or request deletion of your data anytime by contacting support@fortitests.com
+   - You may access, update, or request deletion of your data anytime by contacting support@awm.com
 
-By using FortiTests, you consent to this policy. We may update it occasionally and will notify users of significant changes.
+By using AWM, you consent to this policy. We may update it occasionally and will notify users of significant changes.
 `;
     } else if (type === "terms") {
       title = "Terms & Conditions";
       content = `
-Welcome to FortiTests. By accessing or using our platform, you agree to be bound by the following terms and conditions:
+Welcome to AWM. By accessing or using our platform, you agree to be bound by the following terms and conditions:
 
 1. Fair Use:
-   - FortiTests is intended for personal and non-commercial use.
+   - AWM is intended for personal and non-commercial use.
    - Sharing accounts or test content is strictly prohibited.
 
 2. User Conduct:
@@ -55,7 +55,7 @@ Welcome to FortiTests. By accessing or using our platform, you agree to be bound
    - We do not guarantee any official result based on your performance here.
 
 4. Account Suspension:
-   - FortiTests reserves the right to suspend or delete accounts that violate these terms.
+   - AWM reserves the right to suspend or delete accounts that violate these terms.
 
 5. Modifications:
    - Terms may change without prior notice. Continued use implies acceptance of the updated terms.
@@ -63,7 +63,7 @@ Welcome to FortiTests. By accessing or using our platform, you agree to be bound
     } else if (type === "disclaimer") {
       title = "Disclaimer";
       content = `
-FortiTests is an independent educational platform offering practice tests for competitive exams.
+AWMs is an independent educational platform offering practice tests for competitive exams.
 
 1. No Affiliation:
    - We are not affiliated with any government agency or official exam body.
@@ -72,7 +72,7 @@ FortiTests is an independent educational platform offering practice tests for co
    - While we aim for accuracy in our questions and explanations, we do not guarantee 100% correctness or relevance to actual exams.
 
 3. Outcomes:
-   - Your performance on FortiTests does not guarantee success in any official examination.
+   - Your performance on AWM does not guarantee success in any official examination.
 
 4. Purpose:
    - All content is provided for learning and revision purposes only.
@@ -90,7 +90,7 @@ FortiTests is an independent educational platform offering practice tests for co
         
         {/* Company Info */}
         <div>
-          <h2 className="text-2xl font-bold text-white">FortiTests</h2>
+          <h2 className="text-2xl font-bold text-white">AWM - Ace With Mock</h2>
           <p className="text-sm mt-2">
             Your gateway to government job success. Practice, learn, and crack your exams with confidence.
           </p>
@@ -101,7 +101,7 @@ FortiTests is an independent educational platform offering practice tests for co
           <h3 className="text-lg font-semibold mb-3">About</h3>
           <ul className="space-y-1 text-sm">
             <li><a href="/landing-about" className="hover:text-white">About Us</a></li>
-            <li><a href="#" className="hover:text-white">Blog</a></li>
+            <li><a href="/blogs" className="hover:text-white">Blog</a></li>
           </ul>
         </div>
 
@@ -134,7 +134,7 @@ FortiTests is an independent educational platform offering practice tests for co
 
       {/* Footer Bottom */}
       <div className="mt-10 text-center text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} FortiTests. All rights reserved.
+        &copy; {new Date().getFullYear()} Ace With Mock. All rights reserved.
       </div>
 
       {/* Legal Modal */}

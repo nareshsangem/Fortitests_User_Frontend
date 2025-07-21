@@ -8,7 +8,7 @@ function LandingAboutUsPage() {
     <div>
       <Navbar />
 
-      <div className="bg-blue-50 text-gray-800">
+      <div className="bg-blue-100 text-gray-800">
         {/* Hero Section */}
         <div className="bg-blue-100 text-blue-900 py-20 text-center">
           <motion.h1
@@ -17,7 +17,7 @@ function LandingAboutUsPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl font-bold mb-2"
           >
-            About This Platform
+            About AWM - Ace With Mock
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ function LandingAboutUsPage() {
           >
             <h2 className="text-3xl font-bold mb-4 text-center">Our Mission</h2>
             <p className="text-center text-gray-700 max-w-3xl mx-auto">
-              At This Platform, our mission is to make quality test preparation accessible and effective for every learner.
+              At AWM, our mission is to make quality test preparation accessible and effective for every learner.
               Whether you're preparing for school exams or competitive entrances, we help you practice smarter with real-exam environments,
               instant feedback, and deep analytics.
             </p>
@@ -71,7 +71,7 @@ function LandingAboutUsPage() {
                 {
                   title: 'Completely Free',
                   icon: <FaRocket className="text-4xl text-blue-600 mb-4" />,
-                  desc: 'No paywalls. Practice anytime, anywhere — ad supported.'
+                  desc: 'No paywalls. Practice anytime, anywhere.'
                 },
                 {
                   title: 'Subject Wise Tracking',
@@ -120,7 +120,7 @@ function LandingAboutUsPage() {
         </div>
 
         {/* Why Choose Us */}
-        <div className="bg-blue-50 py-16">
+        <div className="bg-blue-200 py-16">
           <div className="max-w-5xl mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0 }}
@@ -128,7 +128,7 @@ function LandingAboutUsPage() {
               transition={{ duration: 0.6 }}
               className="text-3xl font-bold mb-10 text-center"
             >
-              Why To Choose This Platform?
+              Why To Choose AWM?
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[

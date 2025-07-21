@@ -19,7 +19,7 @@ const testimonials = [
     image: testimonial2,
     quote: "All-In-One Dashboard",
     author:
-      "“After each test, FortiTests saved my results and progress in one place. I could revisit past attempts, view my scores per subject, and even see how my timing improved. Having that kind of data without any paid subscription was a game-changer for my preparation.”",
+      "“After each test, AWM saved my results and progress in one place. I could revisit past attempts, view my scores per subject, and even see how my timing improved. Having that kind of data without any paid subscription was a game-changer for my preparation.”",
   },
   {
     id: 3,
