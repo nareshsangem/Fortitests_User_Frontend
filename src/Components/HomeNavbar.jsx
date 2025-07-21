@@ -4,7 +4,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import api from '../api';
 import { toast } from 'react-toastify';
 import { useUser } from '../context/UserContext';
-import logo from '../assets/awm1.png'
+
 function HomeNavbar() {
   const { user, setUser, loading } = useUser();
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ function HomeNavbar() {
 
         {/* Left: Logo */}
         <Link to="/home" className="flex items-center gap-2 p-1">
-          <img src={logo} alt="Ace With Mock" className='w-auto h-12'/>
+          <img src="/awm1.png" alt="Ace With Mock" className='w-auto h-12'/>
         </Link>
 
         {/* Right: Nav Links + Profile */}

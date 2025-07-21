@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {  Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import  logo from '../assets/awm1.png'
+
 function LandingNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -18,7 +18,7 @@ function LandingNavbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         {/* Logo + Title */}
         <Link to="/" className="flex items-center gap-2 p-1">
-          <img src={logo} alt="Ace With Mock" className='w-auto h-12'/>
+          <img src="/awm1.png" alt="Ace With Mock" className='w-auto h-12'/>
         </Link>
 
         {/* Desktop Nav */}
