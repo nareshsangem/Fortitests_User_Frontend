@@ -5,17 +5,15 @@ const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
+  // ✅ Initialize directly from localStorage
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem('fortitests_user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Try to load from localStorage immediately
-    const storedUser = localStorage.getItem('fortitests_user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-
-    // 2. Also verify session with backend
+    // ✅ Also confirm session validity with backend
     checkUserSession()
       .then((data) => {
         if (data) {
