@@ -46,9 +46,9 @@ function HomeNavbar() {
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:flex-nowrap">
 
         {/* Left: Logo */}
-        <Link to="/home" className="flex items-center gap-2 p-1 text-4xl text-amber-300 font-bold">
-          <img src="/logo2.png" alt="Ace With Mock" className='w-auto h-12'/>
-          <span className="hidden sm:inline">Ace With Mock</span>
+        <Link to="/home" className="flex items-center gap-2 p-1 text-3xl text-white font-bold">
+          <img src="/logo3.png" alt="Ace With Mock" className='w-auto h-12'/>
+          <span className="hidden sm:inline hover:text-amber-300">Ace With Mock</span>
         </Link>
 
         {/* Right: Nav Links + Profile */}
