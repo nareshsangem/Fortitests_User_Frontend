@@ -19,6 +19,7 @@ export default function RegisterPage() {
   const [otpSent, setOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [error, setError] = useState("");
   const [timer, setTimer] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
@@ -52,7 +53,7 @@ export default function RegisterPage() {
       });
       setOtpSent(true);
       setTimer(300); // 5 minutes
-      successToast("OTP sent to your email and mobile");
+      successToast("OTP sent to your Email");
     } catch (err) {
       setError(err.response?.data?.msg || "Failed to send OTP");
       errorToast("Failed to send OTP");
@@ -81,7 +82,7 @@ export default function RegisterPage() {
   };
 
   const registerUser = async () => {
-    setError(""); setLoading(true);
+    setError(""); setLoading2(true);
     try {
       await api.post("/user/register", {
         username: form.username,
@@ -97,7 +98,7 @@ export default function RegisterPage() {
       setError(err.response?.data?.msg || "Registration failed");
       errorToast("Registration failed");
     } finally {
-      setLoading(false);
+      setLoading2(false);
     }
   };
 
@@ -165,8 +166,8 @@ export default function RegisterPage() {
         )}
 
         {otpVerified && (
-          <button onClick={registerUser} disabled={loading} className="w-full bg-[#2874F0] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">
-            {loading ? "Registering..." : "Register"}
+          <button onClick={registerUser} disabled={loading2} className="w-full bg-[#2874F0] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">
+            {loading2 ? "Registering..." : "Register"}
           </button>
         )}
 
@@ -188,7 +189,7 @@ export default function RegisterPage() {
                   <li>You will not attempt to cheat or misuse testing tools provided.</li>
                   <li>We may contact you via email/SMS for updates and exam tips.</li>
                   <li>Violation of terms may lead to account suspension.</li>
-                </ul>
+                </ul> 
                 <p className="mt-4">For full details, please visit our official Terms & Conditions page.</p>
               </div>
               <button onClick={() => setShowTermsModal(false)} className="mt-4 px-4 py-2 bg-[#2874F0] text-white rounded hover:bg-blue-600">

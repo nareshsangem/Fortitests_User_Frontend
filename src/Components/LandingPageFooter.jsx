@@ -86,7 +86,7 @@ AWMs is an independent educational platform offering practice tests for competit
 
   return (
     <footer className="bg-gray-900 text-gray-200 py-10 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
         
         {/* Company Info */}
         <div>
@@ -97,11 +97,12 @@ AWMs is an independent educational platform offering practice tests for competit
         </div>
 
         {/* About Us & Blog */}
+
         <div>
-          <h3 className="text-lg font-semibold mb-3">About</h3>
+          <h3 className="text-lg font-semibold mb-3 ">About</h3>
           <ul className="space-y-1 text-sm">
-            <li><a href="/landing-about" className="hover:text-white">About Us</a></li>
-            <li><a href="/blogs" className="hover:text-white">Blog</a></li>
+            <li><a href="/landing-about" className=" text-gray-300 hover:text-white scale-102">About Us</a></li>
+            <li><a href="/blogs" className="text-gray-300 hover:text-white scale-102">Blog</a></li>
           </ul>
         </div>
 
@@ -109,25 +110,27 @@ AWMs is an independent educational platform offering practice tests for competit
         <div>
           <h3 className="text-lg font-semibold mb-3">Support</h3>
           <ul className="space-y-1 text-sm">
-            <li><a  className="hover:text-white">Contact Us</a></li>
-            <li><a  className="hover:text-white">Help Center</a></li>
-            <li><a className="hover:text-white">Report a Problem</a></li>
+            <li><a  className="text-gray-300 hover:text-white">Contact Us</a></li>
+            <li><a  className="text-gray-300 hover:text-white">Help Center</a></li>
+            <li><a className="text-gray-300 hover:text-white">Report a Problem</a></li>
           </ul>
         </div>
 
         {/* Legal & Social */}
         <div>
+          
           <h3 className="text-lg font-semibold mb-3">Legal & Social</h3>
           <ul className="space-y-1 text-sm mb-4">
-            <li><button onClick={() => openModal("privacy")} className="hover:text-white">Privacy Policy</button></li>
-            <li><button onClick={() => openModal("terms")} className="hover:text-white">Terms & Conditions</button></li>
-            <li><button onClick={() => openModal("disclaimer")} className="hover:text-white">Disclaimer</button></li>
+            <li><button onClick={() => openModal("privacy")} className="text-gray-300 hover:text-white scale-102">Privacy Policy</button></li>
+            <li><button onClick={() => openModal("terms")} className="text-gray-300 hover:text-white scale-102">Terms & Conditions</button></li>
+            <li><button onClick={() => openModal("disclaimer")} className="text-gray-300 hover:text-white scale-102">Disclaimer</button></li>
           </ul>
+          
           <div className="flex gap-4 text-xl">
-            <a href="#" className="hover:text-white" aria-label="Facebook"><FaFacebook /></a>
-            <a href="#" className="hover:text-white" aria-label="Twitter"><FaTwitter /></a>
-            <a href="#" className="hover:text-white" aria-label="Instagram"><FaInstagram /></a>
-            <a href="#" className="hover:text-white" aria-label="YouTube"><FaYoutube /></a>
+            <a href="#" className="text-gray-300 hover:text-white scale-102" aria-label="Facebook"><FaFacebook /></a>
+            <a href="#" className="text-gray-300 hover:text-white scale-102" aria-label="Twitter"><FaTwitter /></a>
+            <a href="#" className="text-gray-300 hover:text-white scale-102" aria-label="Instagram"><FaInstagram /></a>
+            <a href="#" className="text-gray-300 hover:text-white scale-102" aria-label="YouTube"><FaYoutube /></a>
           </div>
         </div>
       </div>

@@ -22,13 +22,13 @@ function HeroSection() {
           <div className="flex flex-col flex-row gap-4 justify-center md:justify-start">
             <button
               onClick={handleClick}
-              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition scale-102 "
             >
               Start Practicing
             </button>
             <button
               onClick={handleClick}
-              className="border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-50 transition"
+              className="border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-50 transition scale-102"
             >
               Browse Exams
             </button>

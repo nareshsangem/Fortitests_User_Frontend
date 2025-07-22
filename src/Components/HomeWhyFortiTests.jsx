@@ -56,7 +56,7 @@ const benefits = [
 
 export default function WhyFortiTests() {
   return (
-    <section className="bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 py-12 px-4 md:px-8 font-sans">
+    <section className="bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 py-12 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why This AWM?</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -72,7 +72,7 @@ export default function WhyFortiTests() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             whileHover={{ scale: 1.05 }}
-            className="bg-white rounded-2xl shadow-md p-6 border-t-4 border-transparent hover:border-blue-500 hover:shadow-xl transition-all duration-300"
+            className="bg-blue-50 rounded-2xl shadow-md p-6 border-t-4 border-transparent hover:border-blue-500 hover:shadow-xl transition-all duration-300"
           >
             <div className="flex items-center justify-center mb-4">{item.icon}</div>
             <h3 className="text-lg font-semibold text-gray-800 mb-2">{item.title}</h3>
