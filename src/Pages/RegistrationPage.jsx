@@ -19,7 +19,6 @@ export default function RegisterPage() {
   const [otpSent, setOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [loading2, setLoading2] = useState(false);
   const [error, setError] = useState("");
   const [timer, setTimer] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
@@ -82,7 +81,7 @@ export default function RegisterPage() {
   };
 
   const registerUser = async () => {
-    setError(""); setLoading2(true);
+    setError(""); setLoading(true);
     try {
       await api.post("/user/register", {
         username: form.username,
@@ -98,7 +97,7 @@ export default function RegisterPage() {
       setError(err.response?.data?.msg || "Registration failed");
       errorToast("Registration failed");
     } finally {
-      setLoading2(false);
+      setLoading(false);
     }
   };
 
@@ -113,20 +112,11 @@ export default function RegisterPage() {
       <div className="bg-blue-50 p-8 rounded-2xl shadow-lg w-full max-w-md space-y-4 relative">
         <h2 className="text-2xl font-bold text-[#2874F0] text-center">CREATE AWM ACCOUNT</h2>
 
-        <input name="username" value={form.username} onChange={handleChange} placeholder="Username" required 
-        className={`w-full border px-3 py-2 rounded-md focus:outline-none ${
-        error.email ? 'input-error' : 'border-gray-300'
-        }`} />
-        <input name="email" value={form.email} onChange={handleChange} placeholder="Email (@gmail.com)" required 
-        className={`w-full border px-3 py-2 rounded-md focus:outline-none ${
-        error.email ? 'input-error' : 'border-gray-300'
-        }`} />
-        <input name="mobile" value={form.mobile} onChange={handleChange} placeholder="Mobile (10 digits)" required 
-        className={`w-full border px-3 py-2 rounded-md focus:outline-none ${
-        error.email ? 'input-error' : 'border-gray-300'
-         }`} />
+        <input name="username" value={form.username} onChange={handleChange} placeholder="Username" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]" />
+        <input name="email" value={form.email} onChange={handleChange} placeholder="Email (@gmail.com)" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]" />
+        <input name="mobile" value={form.mobile} onChange={handleChange} placeholder="Mobile (10 digits)" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]" />
 
-        <select name="gender" value={form.gender} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]">
+        <select name="gender" value={form.gender} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]">
           <option value="">Select Gender</option>
           <option>Male</option>
           <option>Female</option>
@@ -140,10 +130,7 @@ export default function RegisterPage() {
             value={form.password}
             onChange={handleChange}
             placeholder="Password"
-            required
-            className={`w-full border px-3 py-2 rounded-md focus:outline-none ${
-            error.email ? 'input-error' : 'border-gray-300'
-            }`}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2874F0]"
           />
           <span onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-2.5 text-gray-500 cursor-pointer">
             {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -151,7 +138,7 @@ export default function RegisterPage() {
         </div>
 
         <label className="flex items-center gap-2 text-sm">
-          <input type="checkbox" name="agreedToTerms" checked={form.agreedToTerms} required onChange={handleChange} />
+          <input type="checkbox" name="agreedToTerms" checked={form.agreedToTerms} onChange={handleChange} />
           I agree to the{" "}
           <button type="button" className="text-[#2874F0] font-medium underline" onClick={() => setShowTermsModal(true)}>
             Terms & Conditions
@@ -178,8 +165,8 @@ export default function RegisterPage() {
         )}
 
         {otpVerified && (
-          <button onClick={registerUser} disabled={loading2} className="w-full bg-[#2874F0] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">
-            {loading2 ? "Registering..." : "Register"}
+          <button onClick={registerUser} disabled={loading} className="w-full bg-[#2874F0] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">
+            {loading ? "Registering..." : "Register"}
           </button>
         )}
 
@@ -211,22 +198,6 @@ export default function RegisterPage() {
           </div>
         )}
       </div>
-      
-        <style>
-        {`
-          @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25%, 75% { transform: translateX(-4px); }
-            50% { transform: translateX(4px); }
-          }
-
-          .input-error {
-            border-color: #ef4444; /* red-500 */
-            animation: shake 0.3s ease-in-out;
-          }
-        `}
-        </style>
-              
     </div>
   );
 }
