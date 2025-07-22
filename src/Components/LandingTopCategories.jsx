@@ -41,7 +41,7 @@ function LandingTopCategories() {
               <img
                 src={cat.image_url}
                 alt={cat.name}
-                className="h-32 w-full object-cover"
+                className="h-32 w-auto object-cover"
               />
               <div className="p-4 flex flex-col items-center">
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{cat.name}</h3>
