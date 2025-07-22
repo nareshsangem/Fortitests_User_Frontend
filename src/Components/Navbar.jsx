@@ -19,7 +19,7 @@ function LandingNavbar() {
         {/* Logo + Title */}
         <Link to="/" className="flex items-center gap-2 text-3xl text-white font-bold">
           <img src="/awmlogo.png" alt="Ace With Mock" className='w-auto h-10 hover:scale-102'/>
-          <span className="hidden sm:inline hover:text-amber-300">ACE WITH MOCK</span>
+          
         </Link>
 
         {/* Desktop Nav */}
