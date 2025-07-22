@@ -42,11 +42,11 @@ function HomeNavbar() {
   if (loading || !user) return null;
 
   return (
-    <nav className="bg-blue-700 font-sans text-white shadow-md px-4 py-3 sticky top-0 z-50 ">
+    <nav className="bg-blue-700 font-sans text-white shadow-md px-4 sticky top-0 z-50 ">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:flex-nowrap">
 
         {/* Left: Logo */}
-        <Link to="/home" className="flex items-center gap-2 p-1 text-3xl text-white font-bold">
+        <Link to="/home" className="flex items-center gap-2 text-3xl text-white font-bold">
           <img src="/awmlogo.png" alt="Ace With Mock" className='w-auto h-10 hover:scale-102'/>
           <span className="hidden sm:inline hover:text-amber-300">ACE WITH MOCK</span>
         </Link>

@@ -10,12 +10,12 @@ function LandingAboutUsPage() {
 
       <div className="bg-blue-100 text-gray-800">
         {/* Hero Section */}
-        <div className="bg-blue-100 text-blue-900 py-20 text-center">
+        <div className="bg-blue-200 text-blue-900 py-20 text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-2"
+            className="text-4xl font-bold mb-1"
           >
             About AWM - Ace With Mock
           </motion.h1>
@@ -30,7 +30,7 @@ function LandingAboutUsPage() {
         </div>
 
         {/* Our Mission */}
-        <div className="max-w-5xl mx-auto px-4 py-16">
+        <div className="bg-blue-100 max-w-5xl mx-auto px-4 py-16">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -46,7 +46,7 @@ function LandingAboutUsPage() {
         </div>
 
         {/* What We Offer */}
-        <div className="bg-blue-100 py-16">
+        <div className="bg-blue-50 py-16">
           <div className="max-w-6xl mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0 }}
@@ -84,7 +84,7 @@ function LandingAboutUsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-blue-50 rounded-xl p-6 text-center shadow hover:shadow-lg transition"
+                  className="bg-white rounded-xl p-6 text-center shadow hover:shadow-lg transition"
                 >
                   <div className="flex justify-center items-center mb-4">
                     {item.icon}
@@ -98,7 +98,7 @@ function LandingAboutUsPage() {
         </div>
 
         {/* Who We Serve */}
-        <div className=" max-w-5xl mx-auto px-4 py-16">
+        <div className="bg-blue-100 max-w-5xl mx-auto px-4 py-16">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -107,7 +107,7 @@ function LandingAboutUsPage() {
           >
             Who We Serve
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 justify-center text-center md:grid-cols-2 gap-6">
             <ul className="list-disc list-inside space-y-2">
               <li>Competitive Exam Aspirants</li>
               <li>School & College Students</li>

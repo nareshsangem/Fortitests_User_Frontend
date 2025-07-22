@@ -86,11 +86,11 @@ AWM is an independent educational platform offering practice tests for competiti
 
   return (
     <footer className="bg-gray-900 text-gray-200 py-10 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 justify-around md:grid-cols-4  gap-8">
         
         {/* Company Info */}
         <div>
-          <h2 className="text-2xl font-bold text-white">AWM - Ace With Mock</h2>
+          <h2 className="text-2xl font-bold text-white">AWM - ACE With Mock</h2>
           <p className="text-sm mt-2">
             Your gateway to government job success. Practice, learn, and crack your exams with confidence.
           </p>

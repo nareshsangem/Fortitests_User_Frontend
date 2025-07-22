@@ -17,7 +17,7 @@ function AboutUsPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl font-bold mb-2"
           >
-            About AWM - Ace With Mock
+            About AWM - ACE With Mock
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ function AboutUsPage() {
         </div>
 
         {/* Our Mission */}
-        <div className="max-w-5xl mx-auto px-4 py-16">
+        <div className=" bg-blue-50 max-w-5xl mx-auto px-4 py-16">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -103,11 +103,11 @@ function AboutUsPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold mb-6 text-center"
+            className=" bg-blue-100 text-3xl font-bold mb-6 text-center"
           >
             Who We Serve
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 justify-center text-center md:grid-cols-2 gap-6">
             <ul className="list-disc list-inside space-y-2">
               <li>Competitive Exam Aspirants</li>
               <li>School & College Students</li>
@@ -141,7 +141,7 @@ function AboutUsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.2 }}
-                  className="bg-blue-50 p-6 rounded-xl shadow-md hover:shadow-xl transition"
+                  className="bg-blue-100 p-6 rounded-xl shadow-md hover:shadow-xl transition"
                 >
                   <p className="text-gray-700 text-center">{text}</p>
                 </motion.div>

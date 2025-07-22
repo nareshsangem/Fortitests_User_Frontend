@@ -17,7 +17,7 @@ function LandingNavbar() {
     <nav className="bg-blue-600 shadow-md fixed top-0 w-full z-50 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         {/* Logo + Title */}
-        <Link to="/" className="flex items-center gap-2 p-1 text-3xl text-white font-bold">
+        <Link to="/" className="flex items-center gap-2 text-3xl text-white font-bold">
           <img src="/awmlogo.png" alt="Ace With Mock" className='w-auto h-10 hover:scale-102'/>
           <span className="hidden sm:inline hover:text-amber-300">ACE WITH MOCK</span>
         </Link>

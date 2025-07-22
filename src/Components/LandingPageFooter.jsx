@@ -90,7 +90,7 @@ AWMs is an independent educational platform offering practice tests for competit
         
         {/* Company Info */}
         <div>
-          <h2 className="text-2xl font-bold text-white">AWM - Ace With Mock</h2>
+          <h2 className="text-2xl font-bold text-white">AWM - ACE With Mock</h2>
           <p className="text-sm mt-2">
             Your gateway to government job success. Practice, learn, and crack your exams with confidence.
           </p>
@@ -137,7 +137,7 @@ AWMs is an independent educational platform offering practice tests for competit
 
       {/* Footer Bottom */}
       <div className="mt-10 text-center text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} Ace With Mock. All rights reserved.
+        &copy; {new Date().getFullYear()} AWM. All rights reserved.
       </div>
 
       {/* Legal Modal */}
