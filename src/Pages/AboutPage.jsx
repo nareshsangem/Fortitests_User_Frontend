@@ -8,7 +8,7 @@ function AboutUsPage() {
     <div>
       <HomeNavbar />
 
-      <div className="bg-blue-50 text-gray-800">
+      <div className=" text-gray-800">
         {/* Hero Section */}
         <div className="bg-blue-200 text-blue-900 py-20 text-center">
           <motion.h1
