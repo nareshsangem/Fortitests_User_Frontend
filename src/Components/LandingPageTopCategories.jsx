@@ -22,7 +22,7 @@ const LandingPageTopCategories = () => {
   }
 
   return (
-    <section className="px-4 py-10 bg-gradient-to-l from-blue-50 to-sky-100">
+    <section className="px-4 py-10 bg-gradient-to-l from-indigo-100 via-blue-200 to-purple-100">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="flex justify-between items-center mb-8">

@@ -56,7 +56,7 @@ const benefits = [
 
 export default function WhyFortiTests() {
   return (
-    <section className="bg-gradient-to-br from-indigo-100 via-blue-100 to-purple-100 py-12 px-4 md:px-8 font-sans">
+    <section className="bg-gradient-to-br from-indigo-100 via-blue-200 to-purple-100 py-12 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why This AWM?</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">

@@ -56,7 +56,7 @@ const features = [
 
 const LandingpageWhyUs = () => {
   return (
-    <section id='why-us' className="bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 py-16 px-4 md:px-8 font-sans">
+    <section id='why-us' className="bg-gradient-to-br from-indigo-100 via-blue-200 to-purple-100 py-16 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Why AWM?</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">

@@ -27,7 +27,7 @@ function LandingTopCategories() {
   };
 
   return (
-    <div className="bg-blue-50 py-12">
+    <div className="from-sky-100 to-blue-200 py-12">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-2xl font-bold text-center mb-6 text-blue-700">Top Categories</h2>
 

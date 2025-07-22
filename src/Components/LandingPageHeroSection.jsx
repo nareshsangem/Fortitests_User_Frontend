@@ -9,7 +9,7 @@ function HeroSection() {
   };
 
   return (
-    <section className="bg-blue-50 pt-24 md:pt-30 pb-12 ">
+    <section className="from-blue-100 to-sky-200 pt-24 md:pt-30 pb-12 ">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left Text Section */}
         <div className="space-y-8 text-center md:text-left">
