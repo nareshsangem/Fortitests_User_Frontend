@@ -49,7 +49,7 @@ export default function TopCategories() {
                   <img
                     src={cat.image_url}
                     alt={cat.name}
-                    className="w-auto h-auto object-cover rounded-md mb-3"
+                    className="w-auto h-32 rounded-md mb-3"
                   />
                 )}
                 <h3 className="text-sm sm:text-base font-semibold text-center text-gray-800 mb-2">
