@@ -104,7 +104,7 @@ export default function RegisterPage() {
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60).toString().padStart(2, "0");
     const secs = (seconds % 60).toString().padStart(2, "0");
-    return ${mins}:${secs};
+    return `${mins}:${secs}`;
   };
 
   return (
@@ -157,8 +157,8 @@ export default function RegisterPage() {
             <button onClick={verifyOtp} disabled={loading} className="w-full bg-[#2874F0] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">
               {loading ? "Verifying..." : "Verify OTP"}
             </button>
-            <button onClick={() => timer === 0 && sendOtp()} disabled={timer > 0} className={w-full mt-2 font-semibold py-2 rounded-lg transition ${timer > 0 ? "bg-gray-400 text-white" : "bg-yellow-500 text-white hover:bg-yellow-600"}}>
-              {timer > 0 ? Resend OTP in ${formatTime(timer)} : "Resend OTP"}
+            <button onClick={() => timer === 0 && sendOtp()} disabled={timer > 0} className={`w-full mt-2 font-semibold py-2 rounded-lg transition ${timer > 0 ? "bg-gray-400 text-white" : "bg-yellow-500 text-white hover:bg-yellow-600"}`}>
+              {timer > 0 ? `Resend OTP in ${formatTime(timer)} `: "Resend OTP"}
             </button>
             <p className="text-red-600 text-sm text-center">OTP expires in: {formatTime(timer)}</p>
           </>
