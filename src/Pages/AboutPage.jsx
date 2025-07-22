@@ -8,7 +8,7 @@ function AboutUsPage() {
     <div>
       <HomeNavbar />
 
-      <div className=" text-gray-800">
+      <div className="bg-blue-100 text-gray-800">
         {/* Hero Section */}
         <div className="bg-blue-200 text-blue-900 py-20 text-center">
           <motion.h1
@@ -84,7 +84,7 @@ function AboutUsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-blue-50 rounded-xl p-6 text-center shadow hover:shadow-lg transition"
+                  className="bg-white rounded-xl p-6 text-center shadow hover:shadow-lg transition"
                 >
                   <div className="flex justify-center items-center mb-4">
                     {item.icon}
