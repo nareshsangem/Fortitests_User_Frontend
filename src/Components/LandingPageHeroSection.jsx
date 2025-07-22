@@ -9,7 +9,7 @@ function HeroSection() {
   };
 
   return (
-    <section className="from-blue-100 to-sky-200 pt-24 md:pt-30 pb-12 ">
+    <section className="bg-gradient-to-r from-blue-100 to-sky-100 pt-24 md:pt-30 pb-12 ">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left Text Section */}
         <div className="space-y-8 text-center md:text-left">
@@ -19,7 +19,7 @@ function HeroSection() {
           <p className="text-gray-600 text-md">
             Get instant performance insights, PDF reports, and subject-wise analysis for every test you attempt.
           </p>
-          <div className="flex flex-col flex-row gap-4 justify-center md:justify-start">
+          <div className="mt-8 flex justify-center md:justify-start animate-fadeInUp delay-300">
             <button
               onClick={handleClick}
               className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition scale-102 "

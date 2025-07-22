@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import hero_img from "../assets/hero66.png"
 export default function HomeCarousel() {
   return (
-    <section className="bg-gradient-to-r from-blue-100 to-sky-200 py-10 md:py-20">
+    <section className="bg-gradient-to-r from-blue-100 to-sky-100 py-10 md:py-20">
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
         
         {/* Left: Text Content */}
