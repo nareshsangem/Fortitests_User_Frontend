@@ -21,7 +21,7 @@ export default function ForgotPasswordPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const sendOtp = async () => {
-    if (!form.identifier) return toast.error("Enter email or mobile");
+    if (!form.identifier) return toast.error("Enter Your Email");
     setLoading(true);
     try {
       const res = await api.post("/user/send-otp-for-password-reset", {

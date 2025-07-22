@@ -10,19 +10,33 @@ export default function LoginPage() {
   const { setUser } = useUser();
   const [form, setForm] = useState({ identifier: "", password: "" });
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // ✅ State for toggle
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({ identifier: false, password: false });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: false }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
+    // Check required fields
+    const newErrors = {
+      identifier: !form.identifier.trim(),
+      password: !form.password.trim(),
+    };
+    setErrors(newErrors);
+
+    if (newErrors.identifier || newErrors.password) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    setLoading(true);
     try {
       const res = await api.post("/user/login", form);
-
       if (res.data.success) {
         toast.success("Login successful!");
         setUser(res.data.user);
@@ -55,8 +69,9 @@ export default function LoginPage() {
             placeholder="Email or Mobile"
             value={form.identifier}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring focus:border-blue-500"
-            required
+            className={`w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring focus:border-blue-500 ${
+              errors.identifier ? "input-error" : ""
+            }`}
           />
 
           <div className="relative">
@@ -66,8 +81,9 @@ export default function LoginPage() {
               placeholder="Password"
               value={form.password}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring focus:border-blue-500 pr-10"
-              required
+              className={`w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring focus:border-blue-500 pr-10 ${
+                errors.password ? "input-error" : ""
+              }`}
             />
             <button
               type="button"
@@ -99,6 +115,21 @@ export default function LoginPage() {
           </Link>
         </div>
       </div>
+
+      <style>
+        {`
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25%, 75% { transform: translateX(-4px); }
+            50% { transform: translateX(4px); }
+          }
+
+          .input-error {
+            border-color: #ef4444 !important;
+            animation: shake 0.3s ease-in-out;
+          }
+        `}
+      </style>
     </div>
   );
 }
