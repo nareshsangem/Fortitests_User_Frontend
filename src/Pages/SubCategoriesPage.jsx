@@ -56,7 +56,7 @@ export default function SubCategoryPage() {
     <div className="bg-gradient-to-l from-blue-50 to-sky-100 min-h-screen">
       <HomeNavbar />
 
-      <div className="px-4 py-8 max-w-7xl mx-auto">
+      <div className="px-4 py-8 pt-20 max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold text-blue-900">Select a Subcategory</h1>
           <button

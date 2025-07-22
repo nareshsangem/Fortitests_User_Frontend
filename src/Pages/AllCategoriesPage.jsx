@@ -57,7 +57,7 @@ export default function AllCategoriesPage() {
     <div className="bg-gradient-to-l from-blue-50 to-sky-100 min-h-screen font-sans">
       <HomeNavbar />
 
-      <div className="px-4 py-10 max-w-7xl mx-auto">
+      <div className="px-4 py-10 pt-20 max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold mb-6 text-blue-900">Explore All Exam Categories</h1>
 
         <input
