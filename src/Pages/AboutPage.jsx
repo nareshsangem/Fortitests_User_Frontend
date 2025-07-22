@@ -10,7 +10,7 @@ function AboutUsPage() {
 
       <div className="bg-blue-50 text-gray-800">
         {/* Hero Section */}
-        <div className="bg-blue-100 text-blue-900 py-20 text-center">
+        <div className="bg-blue-200 text-blue-900 py-20 text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ function AboutUsPage() {
         </div>
 
         {/* Our Mission */}
-        <div className=" bg-blue-50 max-w-5xl mx-auto px-4 py-16">
+        <div className=" bg-blue-100 max-w-5xl mx-auto px-4 py-16">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -46,7 +46,7 @@ function AboutUsPage() {
         </div>
 
         {/* What We Offer */}
-        <div className="bg-blue-100 py-16">
+        <div className="bg-blue-50 py-16">
           <div className="max-w-6xl mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0 }}
@@ -98,12 +98,12 @@ function AboutUsPage() {
         </div>
 
         {/* Who We Serve */}
-        <div className="max-w-5xl mx-auto px-4 py-16">
+        <div className="bg-blue-100 max-w-5xl mx-auto px-4 py-16">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className=" bg-blue-100 text-3xl font-bold mb-6 text-center"
+            className=" text-3xl font-bold mb-6 text-center"
           >
             Who We Serve
           </motion.h2>
