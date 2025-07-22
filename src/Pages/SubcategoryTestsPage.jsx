@@ -82,7 +82,7 @@ export default function SubcategoryTestsPage() {
   if (!user) return null;
 
   return (
-  <div className="bg-gradient-to-r from-blue-50 pt-28 to-sky-100 min-h-screen">
+  <div className="bg-gradient-to-r from-blue-50 pt-20  to-sky-100 min-h-screen">
     <HomeNavbar />
 
     <div className="px-4 py-10 max-w-7xl mx-auto">

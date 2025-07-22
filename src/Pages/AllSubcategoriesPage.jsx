@@ -43,7 +43,7 @@ export default function AllSubcategoriesPage() {
     <div className="bg-gradient-to-l from-blue-50 to-sky-100 pt-20 min-h-screen font-sans">
       <HomeNavbar />
 
-      <div className="pt-16 px-4 pb-10 max-w-7xl mx-auto">
+      <div className=" px-4 pb-10 max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold mb-6 text-blue-900">All Exams</h1>
 
         <input
