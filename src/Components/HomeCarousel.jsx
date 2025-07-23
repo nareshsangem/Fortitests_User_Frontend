@@ -3,16 +3,16 @@ import { ArrowRight } from 'lucide-react';
 import hero_img from "../assets/hero66.png"
 export default function HomeCarousel() {
   return (
-    <section className="bg-gradient-to-r from-blue-100 to-sky-100 py-10 md:py-20">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+    <section className="bg-gradient-to-r from-blue-100 to-sky-100 pt-24 md:pt-30 pb-12 ">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         
         {/* Left: Text Content */}
-        <div className="flex-1 text-center md:text-left ">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 animate-fadeInUp">
+        <div className="space-y-8 text-center md:text-left md:w-60%">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-800 leading-tight">
             Crack Government Exams with <br className="hidden sm:block" /> Free Mock Tests
           </h1>
 
-          <p className="text-base text-md md:text-lg text-gray-600 mt-6 max-w-xl animate-fadeInUp delay-100">
+          <p className="text-gray-600 text-md">
             Take real exam-like mock tests for SSC, RRB, TSPSC, Banking, and more.
           </p>
           <p className="text-base md:text-md text-gray-600 mt-2 max-w-xl animate-fadeInUp delay-200">
