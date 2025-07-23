@@ -23,13 +23,13 @@ function HeroSection() {
           <div className="mt-8 flex justify-center md:justify-start animate-fadeInUp delay-300">
             <button
               onClick={handleClick}
-              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition scale-102 gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2"
             >
               Start Practicing <ArrowRight size={20} />
             </button>
             <button
               onClick={handleClick}
-              className=" ml-4 border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-50 transition scale-102"
+              className=" ml-4 border  border-blue-600 text-blue-600 hover:bg-blue-100 px-5 py-2 rounded-xl font-medium transition-all"
             >
               Browse Exams
             </button>
