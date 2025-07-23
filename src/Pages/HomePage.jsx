@@ -12,11 +12,11 @@ function HomePage() {
   usePageTracker({ userId: user?.id });
   return (
     <div className="bg-gray-50 min-h-screen">
-      <HomeNavbar />
-      <ScrollingRibbon />
-      <HomeCarousel />
-      <HomeTopCategories />
-      <HomeWhyFortiTests />
+      <HomeNavbar/>
+      <ScrollingRibbon/>
+      <HomeCarousel/>
+      <HomeTopCategories/>
+      <HomeWhyFortiTests/>
 
       <HomeFooter />
     </div>
