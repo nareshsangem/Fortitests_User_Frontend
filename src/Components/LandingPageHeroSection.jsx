@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import hero_img from '../assets/hero66.png'
 function HeroSection() {
   const navigate = useNavigate();
@@ -22,13 +23,13 @@ function HeroSection() {
           <div className="mt-8 flex justify-center md:justify-start animate-fadeInUp delay-300">
             <button
               onClick={handleClick}
-              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition scale-102 "
+              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition scale-102 gap-2"
             >
-              Start Practicing
+              Start Practicing <ArrowRight size={20} />
             </button>
             <button
               onClick={handleClick}
-              className="border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-50 transition scale-102"
+              className=" ml-4 border border-blue-600 text-blue-600 px-6 py-2 rounded hover:bg-blue-50 transition scale-102"
             >
               Browse Exams
             </button>
