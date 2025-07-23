@@ -13,8 +13,6 @@ function HomePage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <HomeNavbar/>
-      <ScrollingRibbon/>
-      <ScrollingRibbon/>
       <ScrollingRibbon/>  
       <HomeCarousel/>
       <HomeTopCategories/>
