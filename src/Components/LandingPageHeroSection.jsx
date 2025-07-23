@@ -10,7 +10,7 @@ function HeroSection() {
 
   return (
     <section className="bg-gradient-to-r from-blue-100 to-sky-100 pt-24 md:pt-30 pb-12 ">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         {/* Left Text Section */}
         <div className="space-y-8 text-center md:text-left">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-800 leading-tight">
