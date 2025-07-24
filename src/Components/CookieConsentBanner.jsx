@@ -37,8 +37,8 @@ const CookieConsentBanner = () => {
     >
       <p className="text-sm text-center md:text-left">
         We use cookies for login, test session management, and to improve your experience. See our{' '}
-        <Link to="/privacy-policy" className="underline text-blue-300">Privacy Policy</Link> and{' '}
-        <Link to="/terms" className="underline text-blue-300">Terms</Link>.
+        <Link  className="underline text-blue-300">Privacy Policy</Link> and{' '}
+        <Link className="underline text-blue-300">Terms</Link>.
       </p>
       <div className="flex gap-2">
         <button
