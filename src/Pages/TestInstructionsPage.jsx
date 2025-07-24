@@ -90,7 +90,7 @@ const TestInstructionsPage = () => {
     navigate(`/take-test/${testId}/start`);
   };
 
-  const confirmClose = () => navigate('/test-closed');
+ 
   const cancelClose = () => setShowCloseModal(false);
 
   if (!test) return <div className="flex justify-center py-10">
@@ -172,7 +172,7 @@ const TestInstructionsPage = () => {
     <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-auto">
       <p className="text-center mb-4">Are you sure you want to close the test?</p>
       <div className="flex justify-center gap-4">
-        <button onClick={confirmClose} className="px-4 py-2 bg-red-600 text-white rounded">
+        <button onClick={() => navigate(-1)} className="px-4 py-2 bg-red-600 text-white rounded">
           Close Test
         </button>
         <button onClick={cancelClose} className="px-4 py-2 bg-gray-300 rounded">
