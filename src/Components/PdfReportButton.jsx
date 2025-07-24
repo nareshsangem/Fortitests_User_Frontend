@@ -2,7 +2,7 @@ import React from 'react';
 
 const PDFReportButton = ({ attemptId }) => {
   const handleDownloadPdf = () => {
-    const downloadUrl = `/pdf/attempts/${attemptId}/download-wrong-report`;
+    const downloadUrl = `/pdf/attempts/${attemptId}/download-wrong-unanswered-report`;
 
     const newWindow = window.open(downloadUrl, '_blank');
 
@@ -16,7 +16,7 @@ const PDFReportButton = ({ attemptId }) => {
       onClick={handleDownloadPdf}
       className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition duration-200"
     >
-      Download Wrong Answers PDF
+      Download Mistakes & Unanswered Report
     </button>
   );
 };
