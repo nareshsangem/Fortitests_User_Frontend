@@ -44,10 +44,10 @@ function MyTestsPage() {
   );
 }
   return (
-    <div>
+    <div className=" bg-blue-50 min-h-screen">
       <HomeNavbar />
 
-      <div className=" bg-blue-50 max-w-7xl mx-auto pt-20 p-4">
+      <div className=" bg-blue-50 max-w-7xl mx-auto  pt-20 p-4">
         <div className='flex flex-row justify-between items-center'>
           <div>
                <h2 className="text-2xl font-semibold mb-6">My Tests</h2>
