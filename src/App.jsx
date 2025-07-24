@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <>
-      {/* 🔐 Toast + Cookie Consent must be outside the Routes */}
+      {/*  Toast + Cookie Consent must be outside the Routes */}
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -47,7 +47,7 @@ export default function App() {
       />
       <CookieConsentBanner />
 
-      {/* 🌐 Routes */}
+      {/*  Routes */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/all-categories" element={<LandingPageAllCategoriesPage />} />

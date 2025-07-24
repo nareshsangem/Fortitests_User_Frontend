@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  // ✅ Redirect to landing page if not authenticated
+  //  Redirect to landing page if not authenticated
   return user ? children : <Navigate to="/" />;
 };
 
