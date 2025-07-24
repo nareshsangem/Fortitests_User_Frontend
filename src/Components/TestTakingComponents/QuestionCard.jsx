@@ -36,12 +36,11 @@ const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMar
 
   return (
     <div className="mb-6 p-4 bg-white rounded shadow border">
-      {/* Question Title */}
+  
       <h3 className="font-semibold text-gray-800 mb-2">
         Q{index + 1}. {question.question}
       </h3>
 
-      {/* Image if exists */}
       {question.image && (
         <img
           src={question.image}
@@ -50,7 +49,7 @@ const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMar
         />
       )}
 
-      {/* Options Rendering */}
+   
       <div className="space-y-2">
         {question.type === 'single' &&
           question.options.map((opt, i) => (
@@ -100,7 +99,7 @@ const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMar
         )}
       </div>
 
-      {/* Mark for Review Button */}
+      
       <div className="mt-4">
         <button
           onClick={onMark}
@@ -121,7 +120,7 @@ const QuestionCard = ({ question, answer = {}, index, setAnswer, isMarked, onMar
           Clear Answer
         </button>
       )}      
-      {/* Optional Marks Display */}
+     
       <div className="mt-3 text-xs text-gray-500">
         +{question.positive_marks} mark{question.positive_marks !== 1 ? 's' : ''} | 
         -{question.negative_marks} negative

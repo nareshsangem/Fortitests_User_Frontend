@@ -2,7 +2,8 @@ import React from 'react';
 
 const PDFReportButton = ({ attemptId }) => {
   const handleDownloadPdf = () => {
-    const downloadUrl = `/pdf/attempts/${attemptId}/download-wrong-report`;
+     const backendBaseURL = "https://fortitests-user-backend.onrender.com"; 
+    const downloadUrl = `${backendBaseURL}/pdf/attempts/${attemptId}/download-wrong-report`;
 
     const newWindow = window.open(downloadUrl, '_blank');
 
