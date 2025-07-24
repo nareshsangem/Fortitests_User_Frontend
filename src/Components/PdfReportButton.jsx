@@ -2,7 +2,7 @@ import React from 'react';
 
 const PDFReportButton = ({ attemptId }) => {
   const handleDownloadPdf = () => {
-    const downloadUrl = `/pdf/attempts/${attemptId}/download-wrong-unanswered-report`;
+    const downloadUrl = `/pdf/attempts/${attemptId}/download-wrong-report`;
 
     const newWindow = window.open(downloadUrl, '_blank');
 
