@@ -51,15 +51,8 @@ const LandingPageAllCategoriesPage = () => {
         </div>
         ) : filtered.length === 0 ? (
           <div className="text-center py-16 text-gray-500 text-lg">
-            😕 No categories found for "<span className="font-semibold">{searchTerm}</span>"
-            <div className="mt-4">
-              <button
-                onClick={() => setSearchTerm('')}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-              >
-                Clear Search
-              </button>
-            </div>
+            😕 Yet to add Categories please check back later"<span className="font-semibold">{searchTerm}</span>"
+            
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
