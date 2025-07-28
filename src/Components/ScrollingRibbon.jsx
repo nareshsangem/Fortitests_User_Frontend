@@ -5,8 +5,8 @@ export default function ScrollingRibbon() {
     <div className="relative w-full overflow-hidden mt-16  bg-yellow-100 border-y border-yellow-100">
       <div className="scroll-container">
         <div className="scroll-text">
-          🆕 SSC Tests Available CGL-PYQ, Remaining Will Come Soon.. Stay tune 🚀 Practice Now — 100% Free with Instant Results & PDF Reports! &nbsp;&nbsp;&nbsp;&nbsp;
-          🆕 SSC Tests Available CGL-PYQ, Remaining Will Come Soon.. Stay tune🚀 Practice Now — 100% Free with Instant Results & PDF Reports!
+          🆕 SSC  CGL-PYQ Available ,Stay tuned for futher updates 🚀 Practice Now — 100% Free with Instant Results & PDF Reports! &nbsp;&nbsp;&nbsp;&nbsp;
+          🆕 SSC  CGL-PYQ Available, Stay tuned for futher updates🚀 Practice Now — 100% Free with Instant Results & PDF Reports!
         </div>
       </div>
 
