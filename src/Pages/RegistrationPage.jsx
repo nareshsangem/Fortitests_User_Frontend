@@ -167,7 +167,7 @@ export default function RegisterPage() {
 
         {otpVerified && (
           <button onClick={registerUser} disabled={loading2} className="w-full bg-[#2874F0] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">
-            {loading2 ? "Registering..." : "Register"}
+            {loading2 ? "Registering..." : "Click to Register"}
           </button>
         )}
 
